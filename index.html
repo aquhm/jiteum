@@ -6,102 +6,236 @@
   <title>하루회고 — 사진 한 장, 음성 30초로 끝내는 3분 회고</title>
   <meta name="description" content="AI 정리부터 음성 나레이션까지 전부 휴대폰 안에서. 당신의 하루는 기기를 떠나지 않습니다.">
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="site-header container">
-    <a href="index.html" class="home-link"><img src="assets/logo_mark.png" alt="" class="logo">하루회고</a>
+  <header class="site-header">
+    <div class="container bar">
+      <a href="index.html" class="home-link"><img src="assets/logo_mark.png" alt="" class="logo">하루회고</a>
+      <span class="nav-chip">곧 출시</span>
+    </div>
   </header>
 
   <main>
-    <section class="hero container">
-      <div class="hero-copy">
-        <h1>당신의 하루는<br>기기를 떠나지 않습니다</h1>
-        <p class="hero-sub">사진 한 장, 음성 30초로 끝내는 3분 회고.<br>AI 정리부터 음성 나레이션까지 전부 휴대폰 안에서.</p>
-        <span class="badge-soon">Google Play 곧 출시</span>
-      </div>
-      <div class="phone-mock" aria-hidden="true">
-        <div class="phone-card">
-          <span class="phone-pill">오늘의 회고</span>
-          <div class="phone-photo"></div>
-          <p>퇴근길 노을이 유난히 길던 날.</p>
-          <p><strong>잘한 점</strong> — 미루던 정리를 끝냄</p>
-          <p><strong>내일 첫 행동</strong> — 아침 10분 산책</p>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <h1>당신의 하루는<br>기기를 떠나지 않습니다</h1>
+          <p class="hero-sub">사진 한 장, 음성 30초로 끝내는 3분 회고.<br>AI 정리부터 음성 나레이션까지 전부 휴대폰 안에서.</p>
+          <span class="badge-soon">Google Play 곧 출시</span>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="device" aria-hidden="true">
+            <div class="screen">
+              <div class="scr-top"><span class="pill">오늘의 회고</span><span>6월 14일</span></div>
+              <div class="scr-photo"></div>
+              <p class="scr-line">퇴근길 노을이 유난히 길던 날.</p>
+              <p class="scr-line"><span class="scr-tag">잘한 점</span> 미루던 정리를 끝냄</p>
+              <p class="scr-line"><span class="scr-tag">내일 첫 행동</span> 아침 10분 산책</p>
+              <div class="scr-divider"></div>
+              <div class="scr-player">
+                <span class="scr-play"></span>
+                <div class="wave">
+                  <span style="height:40%"></span><span style="height:70%"></span><span style="height:100%"></span>
+                  <span style="height:55%"></span><span style="height:85%"></span><span style="height:35%"></span>
+                  <span style="height:65%"></span><span style="height:45%"></span><span style="height:75%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="steps container">
-      <h2>3분이면 충분해요</h2>
-      <ol class="step-list">
-        <li>
-          <span class="step-num">1</span>
-          <h3>사진 한 장</h3>
-          <p>오늘을 기억나게 하는 한 장이면 됩니다.</p>
-        </li>
-        <li>
-          <span class="step-num">2</span>
-          <h3>음성 30초</h3>
-          <p>타이핑 대신 말로 남기세요. 기기 안에서 글로 바뀝니다.</p>
-        </li>
-        <li>
-          <span class="step-num">3</span>
-          <h3>AI 회고 카드</h3>
-          <p>오늘의 핵심, 잘한 점, 내일 첫 행동을 정리해 드립니다.</p>
-        </li>
-      </ol>
+    <section class="section steps">
+      <div class="container steps-grid">
+        <div class="steps-visual reveal">
+          <div class="device" aria-hidden="true">
+            <div class="screen">
+              <div class="scr-top"><span class="pill">회고 작성</span><span>1 / 3</span></div>
+              <div class="scr-photo"></div>
+              <p class="scr-line muted">음성 30초 녹음 중…</p>
+              <div class="scr-player">
+                <span class="scr-play"></span>
+                <div class="wave">
+                  <span style="height:50%"></span><span style="height:90%"></span><span style="height:60%"></span>
+                  <span style="height:100%"></span><span style="height:45%"></span><span style="height:80%"></span>
+                  <span style="height:35%"></span><span style="height:70%"></span><span style="height:55%"></span>
+                </div>
+              </div>
+              <div class="scr-divider"></div>
+              <p class="scr-line"><span class="scr-tag">AI</span> 오늘의 회고를 정리하고 있어요</p>
+            </div>
+          </div>
+        </div>
+        <div class="steps-copy">
+          <div class="section-head reveal">
+            <h2>3분이면 충분해요</h2>
+          </div>
+          <ol class="step-list">
+            <li class="reveal">
+              <span class="step-num">1</span>
+              <div class="step-body">
+                <h3>사진 한 장</h3>
+                <p>오늘을 기억나게 하는 한 장이면 됩니다.</p>
+              </div>
+            </li>
+            <li class="reveal">
+              <span class="step-num">2</span>
+              <div class="step-body">
+                <h3>음성 30초</h3>
+                <p>타이핑 대신 말로 남기세요. 기기 안에서 글로 바뀝니다.</p>
+              </div>
+            </li>
+            <li class="reveal">
+              <span class="step-num">3</span>
+              <div class="step-body">
+                <h3>AI 회고 카드</h3>
+                <p>오늘의 핵심, 잘한 점, 내일 첫 행동을 정리해 드립니다.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
     </section>
 
-    <section class="features container">
-      <h2>회고가 쌓이는 즐거움</h2>
-      <div class="feature-grid">
-        <div class="feature">
-          <h3>음미하기 연출</h3>
-          <p>잔잔한 배경음과 함께 오늘의 회고를 천천히 다시 봅니다.</p>
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal" style="margin-bottom:8px">
+          <h2>회고가 쌓이는 즐거움</h2>
         </div>
-        <div class="feature">
-          <h3>주간 돌아봄</h3>
-          <p>한 주의 반복 키워드와 다음 주의 초점을 정리합니다.</p>
-        </div>
-        <div class="feature">
-          <h3>음성 나레이션</h3>
-          <p>회고 카드를 따뜻한 목소리로 읽어 줍니다. 이것도 기기 안에서.</p>
-        </div>
-        <div class="feature">
-          <h3>백업과 복원</h3>
-          <p>회고 전체를 한 파일로 만들어 직접 보관할 수 있습니다.</p>
+        <div class="features">
+          <div class="feature">
+            <div class="feat-copy reveal">
+              <span class="feat-icon">🎞️</span>
+              <h3>음미하기 연출</h3>
+              <p>잔잔한 배경음과 함께 오늘의 회고를 천천히 다시 봅니다.</p>
+            </div>
+            <div class="feat-visual reveal" aria-hidden="true">
+              <div class="mock-savor">
+                <div class="frame"><span class="play-lg"></span></div>
+                <div class="cap"><span>음미하기 · 02:14</span><span class="dots"><span></span><span></span><span></span></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature flip">
+            <div class="feat-copy reveal">
+              <span class="feat-icon">📅</span>
+              <h3>주간 돌아봄</h3>
+              <p>한 주의 반복 키워드와 다음 주의 초점을 정리합니다.</p>
+            </div>
+            <div class="feat-visual reveal" aria-hidden="true">
+              <div class="mock-week">
+                <div class="ttl">이번 주 돌아봄</div>
+                <div class="chips"><span>#산책</span><span>#정리</span><span>#휴식</span><span>#집중</span></div>
+                <div class="bars">
+                  <span style="height:45%"></span><span style="height:70%"></span><span style="height:55%"></span>
+                  <span class="hi" style="height:100%"></span><span style="height:60%"></span>
+                  <span style="height:80%"></span><span style="height:40%"></span>
+                </div>
+                <p class="focus">다음 주 초점 — <b>꾸준한 아침 산책</b></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feat-copy reveal">
+              <span class="feat-icon">🔊</span>
+              <h3>음성 나레이션</h3>
+              <p>회고 카드를 따뜻한 목소리로 읽어 줍니다. 이것도 기기 안에서.</p>
+            </div>
+            <div class="feat-visual reveal" aria-hidden="true">
+              <div class="mock-tts">
+                <div class="who">
+                  <span class="avatar"></span>
+                  <span><b>나레이션 재생</b><small>보이스 · 하루</small></span>
+                </div>
+                <div class="ctrl">
+                  <span class="scr-play"></span>
+                  <div class="wave">
+                    <span style="height:40%"></span><span style="height:75%"></span><span style="height:100%"></span>
+                    <span style="height:50%"></span><span style="height:85%"></span><span style="height:60%"></span>
+                    <span style="height:95%"></span><span style="height:45%"></span><span style="height:70%"></span>
+                    <span style="height:55%"></span>
+                  </div>
+                  <span class="time">0:42</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature flip">
+            <div class="feat-copy reveal">
+              <span class="feat-icon">🗂️</span>
+              <h3>백업과 복원</h3>
+              <p>회고 전체를 한 파일로 만들어 직접 보관할 수 있습니다.</p>
+            </div>
+            <div class="feat-visual reveal" aria-hidden="true">
+              <div class="mock-backup">
+                <div class="file">
+                  <span class="doc"></span>
+                  <span class="meta"><b>하루회고_백업.zip</b><small>회고 128개 · 사진·음성 포함</small></span>
+                </div>
+                <div class="btns"><span class="solid">백업</span><span class="ghost">복원</span></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="privacy">
-      <div class="container">
+      <div class="container reveal">
+        <div class="lock" aria-hidden="true">🔒</div>
         <h2>전부 기기 안에서 끝납니다</h2>
         <p>AI 회고 생성(Google Gemma), 음성 인식(OpenAI Whisper), 음성 나레이션(Supertone Supertonic)은 모두 휴대폰에서 동작하는 온디바이스 모델로 처리됩니다. 회고·사진·음성은 외부 서버로 전송되지 않으며, 네트워크는 AI 모델 파일을 내려받는 용도로만 사용됩니다.</p>
-        <p><a href="privacy.html">개인정보처리방침에서 자세히 보기</a></p>
+        <a class="more" href="privacy.html">개인정보처리방침에서 자세히 보기</a>
       </div>
     </section>
 
-    <section class="cta container">
-      <h2>오늘부터 3분 회고</h2>
-      <span class="badge-soon">Google Play 곧 출시</span>
+    <section class="cta">
+      <div class="container reveal">
+        <h2>오늘부터 3분 회고</h2>
+        <p>나를 돌아보는 가장 사적인 방법.</p>
+        <div><span class="badge-soon">Google Play 곧 출시</span></div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
+    <div class="container foot-grid">
+      <span class="foot-brand">하루회고</span>
       <nav>
         <a href="privacy.html">개인정보처리방침</a>
         <a href="terms.html">이용약관</a>
         <a href="ai-safety.html">AI 및 안전 안내</a>
       </nav>
-      <p>문의: <a href="mailto:haruhoego@gmail.com">haruhoego@gmail.com</a></p>
-      <p>© 2026 하루회고</p>
+      <div class="foot-meta">
+        <p>문의: <a href="mailto:haruhoego@gmail.com">haruhoego@gmail.com</a></p>
+        <p>© 2026 하루회고</p>
+      </div>
     </div>
   </footer>
+
+  <script>
+    // 스크롤 등장 연출 — IntersectionObserver 기반 점진적 향상.
+    // JS 미동작/reduced-motion이면 .reveal 요소는 그대로 보인다.
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) ||
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        els.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 </body>
 </html>
