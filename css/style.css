@@ -306,3 +306,14 @@ section[id] { scroll-margin-top: 84px; }
   .persona-grid { grid-template-columns: repeat(6, 1fr); gap: 16px; }
   .badge-strip img { width: 76px; height: 76px; }
 }
+
+/* 실용 기능 미니 그리드 — 이미지 없는 기능 확장(되묻기·검색·공유·잠금) */
+.mini-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 64px; }
+.mini-feature { background: var(--surface); border-radius: var(--radius); padding: 22px 20px; }
+.mini-ic { font-size: 24px; display: block; line-height: 1; }
+.mini-feature h4 { margin: 12px 0 6px; font-size: 17px; font-weight: 800; letter-spacing: -.01em; }
+.mini-feature p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+@media (min-width: 768px) {
+  .mini-features { grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 88px; }
+}
