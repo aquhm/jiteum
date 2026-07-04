@@ -317,16 +317,3 @@ section[id] { scroll-margin-top: 84px; }
 @media (min-width: 768px) {
   .mini-features { grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 88px; }
 }
-
-/* 프라이버시 차별화 선언 — 다크 섹션 안의 대형 인용(마케팅 전략 §3) */
-.privacy .privacy-claim {
-  max-width: 30em;
-  margin: 36px auto 0;
-  font-size: clamp(20px, 3.6vw, 28px);
-  font-weight: 800;
-  letter-spacing: -.02em;
-  line-height: 1.45;
-  color: #fff;
-}
-.privacy .privacy-claim em { font-style: italic; color: rgba(255, 255, 255, .72); }
-.privacy .privacy-claim strong { color: var(--accent); }
