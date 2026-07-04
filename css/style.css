@@ -269,3 +269,17 @@ section[id] { scroll-margin-top: 84px; }
   .feature { gap: 36px; }
   .feat-media { aspect-ratio: 16 / 10; }
 }
+
+/* 히어로 후크 칩 — 감성 헤드라인 아래 실용 후크(마케팅 전략 §3) */
+.hooks { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.hook {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+  padding: 10px 18px;
+  border-radius: 999px;
+}
+.hook--dark { background: var(--dark); color: #fff; }
