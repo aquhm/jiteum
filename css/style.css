@@ -269,3 +269,64 @@ section[id] { scroll-margin-top: 84px; }
   .feature { gap: 36px; }
   .feat-media { aspect-ratio: 16 / 10; }
 }
+
+/* 히어로 후크 칩 — 감성 헤드라인 아래 실용 후크(마케팅 전략 §3) */
+.hooks { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.hook {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--accent-soft);
+  padding: 10px 18px;
+  border-radius: 999px;
+}
+.hook--dark { background: var(--dark); color: #fff; }
+
+/* 나를 알아가는 섹션 — 서브 톤 배경으로 3단계/기능 사이 완충 */
+.discover { background: #FBF8F4; }
+.discover-block { margin-top: 40px; }
+.discover h3 { font-size: clamp(22px, 4.5vw, 32px); letter-spacing: -.025em; }
+.discover-block > p {
+  margin-top: 12px;
+  color: var(--ink-soft);
+  font-size: 17px;
+  font-weight: 500;
+  max-width: 34em;
+}
+.persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+.persona-grid img { width: 100%; border-radius: 16px; box-shadow: 0 10px 24px rgba(26, 20, 15, .10); }
+.badge-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 24px; }
+.badge-strip img { width: 64px; height: 64px; border-radius: 50%; box-shadow: 0 6px 16px rgba(26, 20, 15, .12); }
+.badge-more { color: var(--ink-soft); font-size: 15px; font-weight: 600; }
+
+@media (min-width: 768px) {
+  .discover-block { margin-top: 56px; }
+  .persona-grid { grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .badge-strip img { width: 76px; height: 76px; }
+}
+
+/* 실용 기능 미니 그리드 — 이미지 없는 기능 확장(되묻기·검색·공유·잠금) */
+.mini-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 64px; }
+.mini-feature { background: var(--surface); border-radius: var(--radius); padding: 22px 20px; }
+.mini-ic { font-size: 24px; display: block; line-height: 1; }
+.mini-feature h3 { margin: 12px 0 6px; font-size: 17px; font-weight: 800; letter-spacing: -.01em; }
+.mini-feature p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+@media (min-width: 768px) {
+  .mini-features { grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 88px; }
+}
+
+/* 프라이버시 차별화 선언 — 다크 섹션 안의 대형 인용(마케팅 전략 §3) */
+.privacy .privacy-claim {
+  max-width: 30em;
+  margin: 36px auto 0;
+  font-size: clamp(20px, 3.6vw, 28px);
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.45;
+  color: #fff;
+}
+.privacy .privacy-claim em { font-style: italic; color: rgba(255, 255, 255, .72); }
+.privacy .privacy-claim strong { color: var(--accent); }
