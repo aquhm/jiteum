@@ -1,11 +1,11 @@
-# haruhoego-web
+# maumte-web
 
-하루회고 랜딩페이지. GitHub Pages(main 브랜치 root)로 배포되는 순수 정적
+마음테 랜딩페이지. GitHub Pages(main 브랜치 root)로 배포되는 순수 정적
 HTML/CSS 사이트다. 빌드 과정 없음 — push 하면 배포된다.
 
-- 사이트: https://aquhm.github.io/haruhoego-web/
+- 사이트: https://aquhm.github.io/maumte-web/
 - 개인정보처리방침(Play Console 등록 URL):
-  https://aquhm.github.io/haruhoego-web/privacy.html
+  https://aquhm.github.io/maumte-web/privacy.html
 
 ## 법적 문서 동기화 정책
 
