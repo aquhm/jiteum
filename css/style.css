@@ -247,6 +247,18 @@ section[id] { scroll-margin-top: 84px; }
   padding-bottom: 3px;
 }
 
+/* FAQ — 프라이버시 강점을 문답으로 한 번 더 */
+.faq { background: var(--surface); padding: 64px 0; }
+.faq h2 { font-size: clamp(28px, 5.5vw, 44px); letter-spacing: -.025em; }
+.faq-list { margin-top: 34px; display: flex; flex-direction: column; gap: 12px; max-width: 760px; }
+.faq details { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px 22px; }
+.faq summary { cursor: pointer; font-weight: 800; font-size: 16.5px; letter-spacing: -.01em; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--accent); font-size: 22px; font-weight: 700; }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { margin-top: 12px; color: var(--ink-soft); font-size: 15px; line-height: 1.75; }
+@media (min-width: 768px) { .faq { padding: 96px 0; } }
+
 /* CTA */
 .cta { text-align: center; padding: 96px 0; }
 .cta h2 { font-size: clamp(30px, 6vw, 54px); letter-spacing: -.03em; }
