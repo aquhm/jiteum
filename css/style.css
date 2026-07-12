@@ -321,6 +321,15 @@ section[id] { scroll-margin-top: 84px; }
 .p-name { display: block; font-size: 13.5px; font-weight: 800; letter-spacing: -.01em; }
 .p-code { display: block; margin-top: 3px; color: var(--ink-soft); font-size: 11.5px; font-weight: 700; letter-spacing: .06em; }
 
+/* 성향 리빌 프레임 — 결과 발표 순간의 축약 연출(실기기 장면 확보 시 배경 교체) */
+.reveal-frame { margin-top: 26px; border-radius: 20px; overflow: hidden; position: relative; background: linear-gradient(160deg, #241a30 0%, #3a2233 55%, #6b3a2e 100%); padding: 52px 28px 44px; text-align: center; }
+.reveal-frame .rv-eyebrow { color: rgba(255,255,255,.55); font-size: 13.5px; font-weight: 600; }
+.reveal-frame .rv-line { margin-top: 14px; color: #fff; font-size: clamp(20px, 3.6vw, 30px); font-weight: 800; letter-spacing: -.02em; }
+.reveal-frame .caret { border-right: 2px solid rgba(255,255,255,.8); animation: blink 1s step-end infinite; padding-right: 2px; }
+@keyframes blink { 50% { border-color: transparent; } }
+.reveal-frame .rv-voice { margin-top: 16px; color: rgba(255,255,255,.65); font-size: 14px; font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .reveal-frame .caret { animation: none; } }
+
 @media (min-width: 768px) {
   .discover-block { margin-top: 56px; }
   .persona-grid { grid-template-columns: repeat(6, 1fr); gap: 16px; }
