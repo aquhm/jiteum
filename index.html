@@ -29,7 +29,8 @@
       <div class="bar-right">
         <nav class="site-nav">
           <a href="#features">기능</a>
-          <a href="#privacy">개인정보</a>
+          <a href="#galaxy">감정 은하</a>
+          <a href="#faq">FAQ</a>
         </nav>
         <span class="nav-chip">곧 출시</span>
       </div>
@@ -256,6 +257,16 @@
         });
       }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
       els.forEach(function (el) { io.observe(el); });
+    })();
+
+    // 히어로 위에서 헤더 투명화 — 점진적 향상(JS 없으면 흰 헤더 유지).
+    (function () {
+      var hdr = document.querySelector('.site-header');
+      var hero = document.querySelector('.cine-hero');
+      if (!hdr || !hero) return;
+      function sync() { hdr.classList.toggle('clear', window.scrollY < hero.offsetHeight - 90); }
+      window.addEventListener('scroll', sync, { passive: true });
+      sync();
     })();
   </script>
 </body>
