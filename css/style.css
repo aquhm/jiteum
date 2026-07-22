@@ -82,7 +82,8 @@ img { max-width: 100%; display: block; }
   padding: 7px 14px;
   border-radius: 999px;
 }
-/* 히어로 위 투명 헤더 — JS가 clear를 부여(미동작 시 흰 헤더 고정, 무해).
+/* 히어로 위 투명 헤더 — clear는 마크업이 미리 달고, JS는 스크롤에 따라 벗긴다.
+   (JS가 붙이게 두면 첫 페인트에 흰 헤더가 한 프레임 스친다. 미동작 시는 noscript가 되돌림)
    overlay는 랜딩 전용: 흐름에서 빼내 히어로 위에 겹친다(법적 문서 페이지는 sticky 유지). */
 .site-header { transition: background .3s ease, border-color .3s ease; }
 .site-header.overlay { position: fixed; top: 0; left: 0; right: 0; }

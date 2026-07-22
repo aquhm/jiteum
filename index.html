@@ -21,10 +21,20 @@
   <link rel="preload" as="image" href="assets/7.webp">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="css/style.css?v=2">
-  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+  <noscript><style>
+    .reveal { opacity: 1; transform: none; }
+    /* JS 미동작이면 clear 를 벗길 주체가 없다. 히어로 밖에서 흰 글자가 흰 배경에
+       묻히지 않도록, 마크업의 초기 clear 를 여기서 흰 헤더로 되돌린다. */
+    .site-header.clear { background: rgba(255,255,255,.82); border-bottom-color: var(--line);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .site-header.clear .home-link, .site-header.clear .site-nav a { color: var(--ink); }
+    .site-header.clear .nav-chip { background: var(--surface); color: var(--ink-soft); }
+  </style></noscript>
 </head>
 <body>
-  <header class="site-header overlay">
+  <!-- clear 를 마크업에 미리 준다: 첫 페인트부터 투명해야 흰 헤더가 한 프레임 스치지 않는다.
+       스크롤 위치는 아래 sync() 가 곧바로 바로잡는다. -->
+  <header class="site-header overlay clear">
     <div class="container bar">
       <a href="/" class="home-link"><img src="assets/logo_mark.png?v=4" alt="" class="logo">마음테</a>
       <div class="bar-right">
