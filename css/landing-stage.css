@@ -64,3 +64,28 @@
   border: 1px solid #EBDBC5; font-size: 12px; color: #6E5B47; }
 .sc-week .note { margin-top: 20px; padding: 14px 15px; border-radius: 12px; background: #fff;
   border: 1px solid #EFE3D5; font-size: 12.5px; line-height: 1.75; color: #6E5B47; }
+
+/* ── 한 달 — 감정 은하 ── */
+.sc-galaxy { background: radial-gradient(120% 80% at 50% 34%, #2A1F44 0%, #140F26 62%, #0C0918 100%);
+  color: #fff; }
+.sc-galaxy .h { font-size: 11.5px; color: #C9A7E8; letter-spacing: .06em; }
+.sc-galaxy .ttl { margin-top: 9px; font-size: 19px; font-weight: 800; letter-spacing: -.02em; color: #fff; }
+.sc-galaxy .sky { position: relative; margin-top: 18px; height: 300px; }
+.sc-galaxy .sky i { position: absolute; border-radius: 50%; background: #fff;
+  box-shadow: 0 0 9px 2px rgba(233,161,124,.5); }
+.sc-galaxy .pass { margin-top: 6px; font-size: 12.5px; line-height: 1.9; color: rgba(255,255,255,.74); }
+
+/* ── 계절과 해 — 한 해의 리듬 ── */
+.sc-year { background: linear-gradient(168deg, #241812 0%, #3E2419 46%, #6B3A28 100%); color: #fff; }
+.sc-year .h { font-size: 11.5px; color: #F2B08C; letter-spacing: .06em; }
+.sc-year .ttl { margin-top: 9px; font-size: 19px; font-weight: 800; letter-spacing: -.02em; color: #fff; }
+.sc-year .grid { margin-top: 22px; display: grid; grid-template-columns: repeat(31, 7px); gap: 1.6px; }
+.sc-year .grid i { width: 7px; height: 7px; border-radius: 2px; background: rgba(255,255,255,.08); }
+.sc-year .grid i.m1 { background: #F2B17C; }
+.sc-year .grid i.m2 { background: #E7C36B; }
+.sc-year .grid i.m3 { background: #9CB0D6; }
+.sc-year .grid i.m4 { background: #CC8C8C; }
+.sc-year .cap { margin-top: 14px; font-size: 11.5px; color: rgba(255,255,255,.5); }
+.sc-year .care { margin-top: 20px; padding: 14px 15px; border-radius: 12px; background: rgba(0,0,0,.26);
+  border: 1px solid rgba(255,255,255,.13); font-size: 12.5px; line-height: 1.75;
+  color: rgba(255,255,255,.78); }
