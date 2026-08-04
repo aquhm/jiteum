@@ -181,25 +181,6 @@ section[id] { scroll-margin-top: 84px; }
 .step-body h3 { font-size: clamp(19px, 3vw, 24px); margin-bottom: 6px; }
 .step-body p { color: var(--ink-soft); font-size: 16px; }
 
-/* 기능 시리즈 — 헤딩 + 가로 가득 채우는 실사 이미지 밴드 */
-.features { padding-top: 16px; display: flex; flex-direction: column; gap: 64px; }
-.feature { display: flex; flex-direction: column; gap: 22px; }
-.feat-copy h3 { font-size: clamp(26px, 5vw, 40px); letter-spacing: -.025em; line-height: 1.15; }
-.feat-copy p { margin-top: 14px; color: var(--ink-soft); font-size: 17px; font-weight: 500; max-width: 30em; }
-
-.feat-media {
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  border-radius: 22px;
-  overflow: hidden;
-  background: var(--surface);
-}
-.feat-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /* 프라이버시 — 다크 섹션 */
 .privacy {
   background: var(--dark);
@@ -233,6 +214,23 @@ section[id] { scroll-margin-top: 84px; }
   border-bottom: 1.5px solid var(--accent);
   padding-bottom: 3px;
 }
+
+/* 노을 창가 사진을 바닥에 깐다. 대비가 최우선이라 아주 낮게 깔고 덮는다 */
+.privacy { position: relative; overflow: hidden; }
+.privacy .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: .22; }
+.privacy .bg-veil { position: absolute; inset: 0;
+  background: radial-gradient(120% 90% at 50% 40%, rgba(26,20,15,.72) 0%, rgba(26,20,15,.94) 100%); }
+.privacy .container { position: relative; z-index: 1; }
+
+/* 기기를 떠나지 않는다 → "그럼 폰을 잃으면?" 의 답까지 같은 섹션에 둔다 */
+.pv-rows { max-width: 760px; margin: 34px auto 0; display: grid; grid-template-columns: 1fr;
+  gap: 12px; text-align: left; }
+.pv-row { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px; padding: 20px; }
+.pv-row h3 { font-size: 16.5px; color: #fff; }
+.pv-row p { margin-top: 8px; color: rgba(255,255,255,.66); font-size: 14.5px; line-height: 1.7; }
+@media (min-width: 760px) { .pv-rows { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
 
 /* FAQ — 프라이버시 강점을 문답으로 한 번 더 */
 .faq { background: var(--surface); padding: 64px 0; }
@@ -294,10 +292,6 @@ section[id] { scroll-margin-top: 84px; }
   .step-list { flex-direction: row; gap: 40px; margin-top: 36px; }
   .step-list li { flex: 1; }
   .steps-media { aspect-ratio: 16 / 10; margin-top: 52px; }
-
-  .features { gap: 112px; padding-top: 28px; }
-  .feature { gap: 36px; }
-  .feat-media { aspect-ratio: 16 / 10; }
 }
 
 /* 나를 알아가는 섹션 — 서브 톤 배경으로 3단계/기능 사이 완충 */
