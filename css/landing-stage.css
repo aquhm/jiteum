@@ -50,7 +50,7 @@
 .sc-day .bl b { display: block; font-size: 11px; color: var(--accent); letter-spacing: .05em; }
 .sc-day .bl span { display: block; margin-top: 5px; font-size: 13px; line-height: 1.7; color: #6E5B47; }
 .sc-day .moods { margin-top: 18px; display: flex; gap: 7px; }
-.sc-day .moods i { width: 26px; height: 26px; border-radius: 50%; background: #EFE3D5; }
+.sc-day .moods i { width: 26px; height: 26px; border-radius: 50%; background: rgba(229,216,202,.30); }
 .sc-day .moods i:first-child { background: #F2B17C; }
 
 /* ── 한 주 — 주간 돌아봄 ── */
@@ -106,21 +106,32 @@
     list-style: none; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
     z-index: 2; }
   .has-js .st-rail li { position: relative; padding-left: 22px; font-size: 14px; font-weight: 700;
-    color: rgba(26,20,15,.28); line-height: 2; transition: color .5s ease; }
+    color: rgba(26,20,15,.62); line-height: 2; transition: color .5s ease; }
   .has-js .st-rail li::before { content: ""; position: absolute; left: 0; top: 50%; width: 11px;
     height: 2px; background: currentColor; transform: translateY(-50%); opacity: .5;
     transition: width .5s ease; }
   .has-js .st-rail li.is-on { color: var(--accent); }
   .has-js .st-rail li.is-on::before { width: 16px; opacity: 1; }
 
+  /* padding: 0 은 base 의 40px 0 을 걷어내는 초기화다. 그 뒤에 오는 longhand 로
+     헤더(fixed, 64px) 자리를 padding-top 으로 남긴다 — 순서를 바꾸면 무효가 된다.
+     align-content 는 그래도 넘칠 때 행이 위로 붙는 걸 막는다. */
   .has-js .st-scene { position: absolute; inset: 0; padding: 0; border-top: 0;
     display: grid; grid-template-columns: .95fr 1.05fr; gap: 56px; align-items: center;
-    max-width: var(--container); margin: 0 auto; padding-left: 130px; padding-right: 20px;
+    align-content: center;
+    max-width: var(--container); margin: 0 auto;
+    padding-top: 84px; padding-left: 130px; padding-right: 20px;
     opacity: 0; transition: opacity .55s ease; pointer-events: none; }
   .has-js .st-scene.is-on { opacity: 1; pointer-events: auto; }
 
-  .has-js .st-screen { margin-top: 0; justify-self: center; width: 320px; height: 660px;
-    border-radius: 40px; padding: 13px; background: #15100C; overflow: visible;
+  /* 높이는 뷰포트를 따라 줄어든다 — 낮은 창(1366×768·1280×720)에서 폰이 헤더
+     밑으로 들어가거나 트랙에 잘리던 문제.
+     속화면 중 가장 빡빡한 건 .sc-week 가 아니라 .sc-day(사진 150px + 블록 둘 +
+     기분 점)다. 641px 창에서 프레임 493px, 여백 2px 로 아슬하게 들어간다.
+     창 높이가 640px 아래로 더 내려가면 기분 점부터 잘리기 시작한다. */
+  .has-js .st-screen { margin-top: 0; justify-self: center; width: 320px;
+    height: min(660px, calc(100vh - 148px));
+    border-radius: 40px; padding: 13px; background: #14100C; overflow: visible;
     box-shadow: 0 34px 90px rgba(0,0,0,.34), 0 0 0 1.5px rgba(255,255,255,.09); }
   .has-js .st-screen .sc { height: 100%; border-radius: 28px; overflow: hidden; }
 
@@ -128,7 +139,7 @@
   .has-js .stage-track.is-dark .st-copy h3 { color: #fff; }
   .has-js .stage-track.is-dark .st-copy p { color: rgba(255,255,255,.72); }
   .has-js .stage-track.is-dark .st-tag { background: rgba(255,255,255,.13); color: #F2B08C; }
-  .has-js .stage-track.is-dark .st-rail li { color: rgba(255,255,255,.30); }
+  .has-js .stage-track.is-dark .st-rail li { color: rgba(255,255,255,.55); }
   .has-js .stage-track.is-dark .st-rail li.is-on { color: #F2B08C; }
 }
 
@@ -137,7 +148,12 @@
    920px 안에만 있다. 그대로 두면 폴백에서 어두운 배경 위에 어두운 글자가 남아
    제목 명암비가 1.1:1 까지 떨어진다. author !important 는 non-important 인라인
    스타일을 이기므로 JS 는 건드리지 않고 여기서 무력화한다. */
-@media (max-width: 919px) { .stage-track { background: transparent !important; } }
+@media not all and (min-width: 920px) { .stage-track { background: transparent !important; } }
+
+/* 눈에는 안 보이되 접근성 트리에는 남는 제목 — display:none 이면 안 된다.
+   무대엔 보이는 제목을 두지 않기로 한 디자인이라, 문서 개요만 바로잡는다. */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .stage-track, .st-scene, .st-rail li, .st-rail li::before { transition: none !important; }
