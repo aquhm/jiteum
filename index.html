@@ -31,6 +31,24 @@
     .site-header.clear .home-link, .site-header.clear .site-nav a { color: var(--ink); }
     .site-header.clear .nav-chip { background: var(--surface); color: var(--ink-soft); }
   </style></noscript>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication",
+   "name":"마음테","applicationCategory":"LifestyleApplication","operatingSystem":"Android",
+   "url":"https://www.jiteum.com/",
+   "description":"사진 한 장과 음성 30초로 남기는 AI 회고 일기. 기록·AI 정리·음성 나레이션이 전부 휴대폰 안에서 동작합니다."}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+   {"@type":"Question","name":"월 구독인가요?","acceptedAnswer":{"@type":"Answer","text":"아니요. 폰 안에서 완결되는 기능은 한 번 결제하면 영원히 열립니다. 자동결제도, 해지할 것도 없습니다."}},
+   {"@type":"Question","name":"사보기 전에 써볼 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"설치하면 열나흘 동안 모든 기능이 열려 있습니다. 결제수단을 등록할 필요도 없습니다. 열나흘이 지나도 그동안 만든 기록은 언제든 다시 볼 수 있습니다."}},
+   {"@type":"Question","name":"기록이 얼마나 쌓여야 지나온 길을 볼 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"열나흘부터 열립니다. 세 달이 넘으면 계절 챕터로, 연말이 되면 한 해 전체로 자랍니다."}},
+   {"@type":"Question","name":"내 기록은 어디에 저장되나요?","acceptedAnswer":{"@type":"Answer","text":"전부 휴대폰 안에 저장됩니다. AI 정리·음성 인식·나레이션까지 기기 안에서 동작하고, 기록·사진·음성은 외부 서버로 전송되지 않습니다."}},
+   {"@type":"Question","name":"회원가입이 필요한가요?","acceptedAnswer":{"@type":"Answer","text":"아니요. 계정 없이 바로 시작합니다. 이메일도, 전화번호도 받지 않습니다."}},
+   {"@type":"Question","name":"인터넷 없이도 되나요?","acceptedAnswer":{"@type":"Answer","text":"네. 비행기 모드에서도 기록부터 AI 하루 카드, 나레이션까지 모두 동작합니다. 네트워크는 처음 AI 모델을 내려받을 때만 쓰입니다."}},
+   {"@type":"Question","name":"AI가 내 일기를 학습하나요?","acceptedAnswer":{"@type":"Answer","text":"아니요. AI는 기기 안에서만 동작하며, 기록을 학습하거나 외부로 보내지 않습니다."}},
+   {"@type":"Question","name":"휴대폰을 바꾸면 기록은 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"설정의 백업 기능으로 기록 전체를 한 파일로 내보내고, 새 기기에서 복원할 수 있습니다."}},
+   {"@type":"Question","name":"어떤 기기에서 쓸 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"Google Play(안드로이드)로 먼저 출시됩니다. iOS는 준비 중이에요."}}]}
+  </script>
 </head>
 <body>
   <!-- clear 를 마크업에 미리 준다: 첫 페인트부터 투명해야 흰 헤더가 한 프레임 스치지 않는다.
@@ -380,12 +398,14 @@
       <div class="container">
         <div class="section-head reveal"><h2>시작 전에 궁금한 것들</h2></div>
         <div class="faq-list reveal">
-          <details open><summary>내 기록은 어디에 저장되나요?</summary><p>전부 휴대폰 안에 저장됩니다. AI 정리·음성 인식·나레이션까지 기기 안에서 동작하고, 기록·사진·음성은 외부 서버로 전송되지 않습니다.</p></details>
+          <details open><summary>월 구독인가요?</summary><p>아니요. 폰 안에서 완결되는 기능은 한 번 결제하면 영원히 열립니다. 자동결제도, 해지할 것도 없습니다.</p></details>
+          <details><summary>사보기 전에 써볼 수 있나요?</summary><p>설치하면 열나흘 동안 모든 기능이 열려 있습니다. 결제수단을 등록할 필요도 없습니다. 열나흘이 지나도 그동안 만든 기록은 언제든 다시 볼 수 있습니다.</p></details>
+          <details><summary>기록이 얼마나 쌓여야 지나온 길을 볼 수 있나요?</summary><p>열나흘부터 열립니다. 세 달이 넘으면 계절 챕터로, 연말이 되면 한 해 전체로 자랍니다.</p></details>
+          <details><summary>내 기록은 어디에 저장되나요?</summary><p>전부 휴대폰 안에 저장됩니다. AI 정리·음성 인식·나레이션까지 기기 안에서 동작하고, 기록·사진·음성은 외부 서버로 전송되지 않습니다.</p></details>
           <details><summary>회원가입이 필요한가요?</summary><p>아니요. 계정 없이 바로 시작합니다. 이메일도, 전화번호도 받지 않습니다.</p></details>
           <details><summary>인터넷 없이도 되나요?</summary><p>네. 비행기 모드에서도 기록부터 AI 하루 카드, 나레이션까지 모두 동작합니다. 네트워크는 처음 AI 모델을 내려받을 때만 쓰입니다.</p></details>
           <details><summary>AI가 내 일기를 학습하나요?</summary><p>아니요. AI는 기기 안에서만 동작하며, 기록을 학습하거나 외부로 보내지 않습니다.</p></details>
           <details><summary>휴대폰을 바꾸면 기록은 어떻게 되나요?</summary><p>설정의 백업 기능으로 기록 전체를 한 파일로 내보내고, 새 기기에서 복원할 수 있습니다.</p></details>
-          <details><summary>무료로 어디까지 쓸 수 있나요?</summary><p>기록하고, AI가 하루 카드로 정리하고, 음미하기 연출로 돌아보는 흐름은 모두 무료입니다. Pro는 연출 테마·나레이션 보이스·감성 서체처럼 그 시간을 더 아름답게 만드는 부분입니다.</p></details>
           <details><summary>어떤 기기에서 쓸 수 있나요?</summary><p>Google Play(안드로이드)로 먼저 출시됩니다. iOS는 준비 중이에요.</p></details>
         </div>
       </div>
