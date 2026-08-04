@@ -17,3 +17,50 @@
   letter-spacing: -.03em; line-height: 1.2; text-shadow: 0 3px 24px rgba(0,0,0,.35); }
 .band p { margin-top: 17px; color: rgba(255,255,255,.82); font-size: 17px; line-height: 1.75;
   max-width: 29em; text-shadow: 0 2px 14px rgba(0,0,0,.4); }
+
+/* ══ 스크롤 스테이지 ═════════════════════════════════════════════
+   기본은 평범한 세로 나열이다. has-js + 920px 이상에서만 sticky 무대로
+   승격한다(Task 5). 마크업은 한 벌뿐이라 본문이 JS 에 갇히지 않는다. */
+.stage-wrap { padding: 64px 0; }
+.stage-viewport { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
+.st-rail { display: none; }               /* 눈금은 무대에서만 쓴다 */
+
+.st-scene { padding: 40px 0; border-top: 1px solid var(--line); }
+.st-scene:first-of-type { border-top: 0; padding-top: 0; }
+.st-tag { display: inline-block; font-size: 12.5px; font-weight: 800; letter-spacing: .08em;
+  color: var(--accent-ink); background: var(--accent-soft); padding: 4px 11px; border-radius: 999px; }
+.st-copy h3 { margin-top: 14px; font-size: clamp(26px, 5vw, 44px); letter-spacing: -.03em;
+  line-height: 1.2; }
+.st-copy p { margin-top: 16px; color: var(--ink-soft); font-size: 17px; line-height: 1.75;
+  max-width: 31em; }
+.st-screen { margin-top: 26px; width: 300px; max-width: 100%; border-radius: 22px;
+  overflow: hidden; }
+
+/* ── 폰 안 화면 공통 ── */
+.sc { padding: 26px 20px; font-size: 13px; }
+
+/* ── 하루 — 하루 카드 ── */
+.sc-day { background: linear-gradient(170deg, #FDF7F1 0%, #F6E7DD 100%); color: #3A2E24; }
+.sc-day .date { font-size: 11.5px; color: #A08A76; letter-spacing: .06em; }
+.sc-day .ttl { margin-top: 10px; font-size: 20px; font-weight: 800; letter-spacing: -.02em;
+  line-height: 1.35; }
+.sc-day .ph { margin-top: 16px; height: 150px; border-radius: 14px;
+  background: linear-gradient(150deg, #E0A566, #C2743F 60%, #7A452C); }
+.sc-day .bl { margin-top: 16px; }
+.sc-day .bl b { display: block; font-size: 11px; color: var(--accent); letter-spacing: .05em; }
+.sc-day .bl span { display: block; margin-top: 5px; font-size: 13px; line-height: 1.7; color: #6E5B47; }
+.sc-day .moods { margin-top: 18px; display: flex; gap: 7px; }
+.sc-day .moods i { width: 26px; height: 26px; border-radius: 50%; background: #EFE3D5; }
+.sc-day .moods i:first-child { background: #F2B17C; }
+
+/* ── 한 주 — 주간 돌아봄 ── */
+.sc-week { background: #FBF2EB; color: #3A2E24; }
+.sc-week .h { font-size: 11.5px; color: #A08A76; letter-spacing: .06em; }
+.sc-week .ttl { margin-top: 9px; font-size: 19px; font-weight: 800; letter-spacing: -.02em; }
+.sc-week .bars { margin-top: 22px; display: flex; gap: 8px; align-items: flex-end; height: 130px; }
+.sc-week .bars i { flex: 1; border-radius: 6px 6px 3px 3px; }
+.sc-week .chips { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 7px; }
+.sc-week .chips span { padding: 7px 13px; border-radius: 999px; background: #fff;
+  border: 1px solid #EBDBC5; font-size: 12px; color: #6E5B47; }
+.sc-week .note { margin-top: 20px; padding: 14px 15px; border-radius: 12px; background: #fff;
+  border: 1px solid #EFE3D5; font-size: 12.5px; line-height: 1.75; color: #6E5B47; }
