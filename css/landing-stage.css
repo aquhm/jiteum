@@ -132,6 +132,13 @@
   .has-js .stage-track.is-dark .st-rail li.is-on { color: #F2B08C; }
 }
 
+/* 폴백에서는 JS 가 칠한 인라인 배경을 무시한다.
+   go() 는 폭과 무관하게 항상 배경을 칠하는데, 이를 보정하는 is-dark 글자 반전은
+   920px 안에만 있다. 그대로 두면 폴백에서 어두운 배경 위에 어두운 글자가 남아
+   제목 명암비가 1.1:1 까지 떨어진다. author !important 는 non-important 인라인
+   스타일을 이기므로 JS 는 건드리지 않고 여기서 무력화한다. */
+@media (max-width: 919px) { .stage-track { background: transparent !important; } }
+
 @media (prefers-reduced-motion: reduce) {
   .stage-track, .st-scene, .st-rail li, .st-rail li::before { transition: none !important; }
 }
