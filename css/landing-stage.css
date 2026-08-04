@@ -1,3 +1,19 @@
 /* 랜딩 전용 — 감성 밴드 · 스크롤 스테이지 · 폰 안 화면.
    법적 고지 페이지는 이 파일을 받지 않는다(index.html 만 링크).
    색·간격 토큰은 css/style.css 의 :root 를 그대로 쓴다. */
+
+/* ══ 감성 밴드 — 풀블리드 사진 + 하단 카피 ═══════════════════════
+   랜딩의 호흡을 만드는 자리. 기능을 설명하지 않고 정서만 건넨다.
+   기능 설명은 바로 뒤 스테이지가 맡는다. */
+.band { position: relative; min-height: 74vh; display: flex; align-items: flex-end;
+  overflow: hidden; background: #14100C; }
+.band img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.band .veil { position: absolute; inset: 0; background: linear-gradient(180deg,
+  rgba(20,16,12,.20) 0%, rgba(20,16,12,.30) 42%, rgba(20,16,12,.80) 100%); }
+.band .container { position: relative; z-index: 1; padding-top: 130px; padding-bottom: 66px; }
+.band .eyebrow { color: rgba(255,255,255,.62); font-size: 13.5px; font-weight: 700;
+  letter-spacing: .08em; }
+.band h2 { color: #fff; margin-top: 13px; font-size: clamp(28px, 5vw, 52px);
+  letter-spacing: -.03em; line-height: 1.2; text-shadow: 0 3px 24px rgba(0,0,0,.35); }
+.band p { margin-top: 17px; color: rgba(255,255,255,.82); font-size: 17px; line-height: 1.75;
+  max-width: 29em; text-shadow: 0 2px 14px rgba(0,0,0,.4); }
