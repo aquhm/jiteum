@@ -448,6 +448,8 @@
   </footer>
 
   <script>
+    document.documentElement.classList.add('has-js');
+
     // 스크롤 등장 연출 — IntersectionObserver 기반 점진적 향상.
     // JS 미동작/reduced-motion이면 .reveal 요소는 그대로 보인다.
     (function () {
@@ -473,6 +475,46 @@
       function sync() { hdr.classList.toggle('clear', window.scrollY < hero.offsetHeight - 90); }
       window.addEventListener('scroll', sync, { passive: true });
       sync();
+    })();
+
+    // 스테이지 진행 — 무대 자신의 위치만 본다.
+    // IntersectionObserver + 트리거 요소 방식은 쓰지 않는다: 트리거를 감추면
+    // 레이아웃에서 사라져 관찰이 영영 발화하지 않는다(시안 2차에서 겪음).
+    (function () {
+      var TONE = ['#FBF8F4', '#F7F0E9', '#171129', '#2E1C14'];
+      var DARK = [false, false, true, true];
+      var wrap = document.querySelector('.stage-wrap');
+      var track = document.querySelector('.stage-track');
+      if (!wrap || !track) return;
+      var scenes = document.querySelectorAll('.st-scene');
+      var rails = document.querySelectorAll('.st-rail li');
+      var cur = -1, queued = false;
+
+      function go(i) {
+        if (i === cur) return;
+        cur = i;
+        track.style.background = TONE[i];
+        track.classList.toggle('is-dark', DARK[i]);
+        scenes.forEach(function (el, n) { el.classList.toggle('is-on', n === i); });
+        rails.forEach(function (el, n) { el.classList.toggle('is-on', n === i); });
+      }
+
+      function measure() {
+        var travel = wrap.offsetHeight - window.innerHeight;
+        if (travel <= 0) { go(0); return; }
+        var p = (-wrap.getBoundingClientRect().top) / travel;
+        go(Math.max(0, Math.min(3, Math.floor(p * 4))));
+      }
+
+      function onScroll() {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(function () { queued = false; measure(); });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      measure();
     })();
   </script>
 </body>

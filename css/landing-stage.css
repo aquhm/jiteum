@@ -79,8 +79,10 @@
 .sc-year { background: linear-gradient(168deg, #241812 0%, #3E2419 46%, #6B3A28 100%); color: #fff; }
 .sc-year .h { font-size: 11.5px; color: #F2B08C; letter-spacing: .06em; }
 .sc-year .ttl { margin-top: 9px; font-size: 19px; font-weight: 800; letter-spacing: -.02em; color: #fff; }
-.sc-year .grid { margin-top: 22px; display: grid; grid-template-columns: repeat(31, 7px); gap: 1.6px; }
-.sc-year .grid i { width: 7px; height: 7px; border-radius: 2px; background: rgba(255,255,255,.08); }
+.sc-year .grid { margin-top: 22px; display: grid;
+  grid-template-columns: repeat(31, minmax(0, 1fr)); gap: 1.5px; }
+.sc-year .grid i { width: auto; height: auto; aspect-ratio: 1;
+  border-radius: 2px; background: rgba(255,255,255,.08); }
 .sc-year .grid i.m1 { background: #F2B17C; }
 .sc-year .grid i.m2 { background: #E7C36B; }
 .sc-year .grid i.m3 { background: #9CB0D6; }
@@ -89,3 +91,48 @@
 .sc-year .care { margin-top: 20px; padding: 14px 15px; border-radius: 12px; background: rgba(0,0,0,.26);
   border: 1px solid rgba(255,255,255,.13); font-size: 12.5px; line-height: 1.75;
   color: rgba(255,255,255,.78); }
+
+/* ── has-js + 920px 이상에서만 sticky 무대로 승격 ──────────────────
+   scroll 길이(500vh)에서 무대 높이(100vh)를 뺀 400vh 가 진행 구간이고,
+   한 단계가 정확히 100vh 다. */
+.has-js .stage-wrap { padding: 0; }
+
+@media (min-width: 920px) {
+  .has-js .stage-wrap { height: 500vh; }
+  .has-js .stage-track { position: sticky; top: 0; height: 100vh; overflow: hidden;
+    background: #FBF8F4; transition: background .8s ease; }
+  .has-js .stage-viewport { height: 100%; position: relative; }
+
+  .has-js .st-rail { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0;
+    list-style: none; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
+    z-index: 2; }
+  .has-js .st-rail li { position: relative; padding-left: 22px; font-size: 14px; font-weight: 700;
+    color: rgba(26,20,15,.28); line-height: 2; transition: color .5s ease; }
+  .has-js .st-rail li::before { content: ""; position: absolute; left: 0; top: 50%; width: 11px;
+    height: 2px; background: currentColor; transform: translateY(-50%); opacity: .5;
+    transition: width .5s ease; }
+  .has-js .st-rail li.is-on { color: var(--accent); }
+  .has-js .st-rail li.is-on::before { width: 16px; opacity: 1; }
+
+  .has-js .st-scene { position: absolute; inset: 0; padding: 0; border-top: 0;
+    display: grid; grid-template-columns: .95fr 1.05fr; gap: 56px; align-items: center;
+    max-width: var(--container); margin: 0 auto; padding-left: 130px; padding-right: 20px;
+    opacity: 0; transition: opacity .55s ease; pointer-events: none; }
+  .has-js .st-scene.is-on { opacity: 1; pointer-events: auto; }
+
+  .has-js .st-screen { margin-top: 0; justify-self: center; width: 320px; height: 660px;
+    border-radius: 40px; padding: 13px; background: #15100C; overflow: visible;
+    box-shadow: 0 34px 90px rgba(0,0,0,.34), 0 0 0 1.5px rgba(255,255,255,.09); }
+  .has-js .st-screen .sc { height: 100%; border-radius: 28px; overflow: hidden; }
+
+  /* 어두운 단계에서 글자를 뒤집는다 */
+  .has-js .stage-track.is-dark .st-copy h3 { color: #fff; }
+  .has-js .stage-track.is-dark .st-copy p { color: rgba(255,255,255,.72); }
+  .has-js .stage-track.is-dark .st-tag { background: rgba(255,255,255,.13); color: #F2B08C; }
+  .has-js .stage-track.is-dark .st-rail li { color: rgba(255,255,255,.30); }
+  .has-js .stage-track.is-dark .st-rail li.is-on { color: #F2B08C; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-track, .st-scene, .st-rail li, .st-rail li::before { transition: none !important; }
+}
