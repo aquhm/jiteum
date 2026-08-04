@@ -95,10 +95,9 @@
 /* ── has-js + 920px 이상에서만 sticky 무대로 승격 ──────────────────
    scroll 길이(500vh)에서 무대 높이(100vh)를 뺀 400vh 가 진행 구간이고,
    한 단계가 정확히 100vh 다. */
-.has-js .stage-wrap { padding: 0; }
-
 @media (min-width: 920px) {
-  .has-js .stage-wrap { height: 500vh; }
+  /* 여백은 승격될 때만 걷는다 — 920px 미만 폴백은 base 의 64px 0 을 그대로 쓴다. */
+  .has-js .stage-wrap { height: 500vh; padding: 0; }
   .has-js .stage-track { position: sticky; top: 0; height: 100vh; overflow: hidden;
     background: #FBF8F4; transition: background .8s ease; }
   .has-js .stage-viewport { height: 100%; position: relative; }
