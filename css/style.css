@@ -272,6 +272,10 @@ section[id] { scroll-margin-top: 84px; }
 .legal section { margin-top: 32px; }
 .legal h2 { font-size: 20px; letter-spacing: -.01em; margin-bottom: 12px; }
 .legal section p { margin: 0 0 12px; }
+/* 방침 1조(처리 항목)·8조(권리구제 기관)의 목록. 본문 p 와 같은 결로 붙인다. */
+.legal section ul { margin: 0 0 12px; padding-left: 1.15em; }
+.legal section li { margin: 0 0 8px; }
+.legal section li:last-child { margin-bottom: 0; }
 
 /* 스크롤 등장 연출 (점진적 향상 — JS 없으면 그냥 보임) */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
