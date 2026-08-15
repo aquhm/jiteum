@@ -375,8 +375,11 @@ section[id] { scroll-margin-top: 84px; }
 .pro-badges .b.accent { border-color: var(--accent); color: var(--accent-ink); }
 .pro-badges .b.accent .dot { background: var(--accent); }
 
-.plans { display: grid; grid-template-columns: 1fr; gap: 18px; }
-@media (min-width: 820px) { .plans { grid-template-columns: 1fr 1fr; align-items: start; } }
+/* 파는 플랜이 Pro 하나뿐이라 한 장을 가운데 세운다. 테마 팩을 되살리면
+   두 칸(`1fr 1fr`)으로 되돌리고 max-width 를 걷을 것.
+   아래 `.plan-badge`(추천)와 `.plan li.off`(못 받는 혜택 흐리기)는 지금
+   쓰는 마크업이 없다 — 팩이 돌아오면 그대로 필요해 남겨 둔다. */
+.plans { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 520px; margin: 0 auto; }
 
 .plan { background: #fff; border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 28px 26px 26px; position: relative; }
 .plan.featured { border-color: var(--accent); box-shadow: 0 12px 34px rgba(201,111,74,.14); }
