@@ -375,29 +375,24 @@ section[id] { scroll-margin-top: 84px; }
 .pro-badges .b.accent { border-color: var(--accent); color: var(--accent-ink); }
 .pro-badges .b.accent .dot { background: var(--accent); }
 
-/* 파는 플랜이 Pro 하나뿐이라 한 장을 가운데 세운다. 테마 팩을 되살리면
-   두 칸(`1fr 1fr`)으로 되돌리고 max-width 를 걷을 것.
-   아래 `.plan-badge`(추천)와 `.plan li.off`(못 받는 혜택 흐리기)는 지금
-   쓰는 마크업이 없다 — 팩이 돌아오면 그대로 필요해 남겨 둔다. */
-.plans { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 520px; margin: 0 auto; }
-
-.plan { background: #fff; border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 28px 26px 26px; position: relative; }
-.plan.featured { border-color: var(--accent); box-shadow: 0 12px 34px rgba(201,111,74,.14); }
-.plan-badge {
-  position: absolute; top: -12px; left: 26px; background: var(--accent); color: #fff;
-  font-size: 12px; font-weight: 800; padding: 4px 12px; border-radius: 999px;
+/* Pro 로 열리는 것 — 카드가 아니라 목록으로 둔다.
+   결제는 스토어 안에서 일어나므로 랜딩에 상품 카드를 놓으면 살 수 없는
+   자리에 살 것처럼 생긴 것을 두는 셈이 된다. "이런 게 더 열린다"는 정보만
+   남기고 파는 얼굴(테두리·그림자·구매 안내)은 뺐다.
+   옛 `.plan*` 카드 규칙은 ae00728 에 있다 — 되살릴 일이 있으면 거기서. */
+.unlocks { max-width: 560px; margin: 44px auto 0; }
+.unlocks-label {
+  text-align: center; font-size: 12.5px; font-weight: 800; letter-spacing: .08em;
+  color: var(--ink-soft); margin-bottom: 18px;
 }
-.plan h3 { margin: 0 0 6px; font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
-.plan .plan-sub { margin: 0 0 20px; color: var(--ink-soft); font-size: 14.5px; }
-.plan ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
-.plan li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; }
+.unlocks-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 13px; }
+.unlocks-list li { display: flex; gap: 11px; align-items: flex-start; font-size: 15.5px; font-weight: 600; }
 /* 체크 표시도 문자가 아니라 도형으로 그린다(같은 두부 문제 방지). */
-.plan li .ck { flex: none; width: 19px; height: 19px; border-radius: 50%; margin-top: 3px; background: var(--accent-soft); position: relative; }
-.plan li .ck::after {
+.unlocks-list .ck {
+  flex: none; width: 19px; height: 19px; border-radius: 50%; margin-top: 3px;
+  background: var(--accent-soft); position: relative;
+}
+.unlocks-list .ck::after {
   content: ""; position: absolute; left: 6px; top: 5px; width: 5px; height: 9px;
   border: solid var(--accent-ink); border-width: 0 2px 2px 0; transform: rotate(45deg);
 }
-.plan li.off { color: #B3A79C; }
-.plan li.off .ck { background: #F0ECE8; }
-.plan li.off .ck::after { border-color: #C9BFB6; }
-.plan .plan-foot { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--ink-soft); }
