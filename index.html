@@ -20,7 +20,7 @@
   <link rel="preload" as="image" href="assets/3.webp">
   <link rel="preload" as="image" href="assets/7.webp">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
   <link rel="stylesheet" href="css/landing-stage.css?v=1">
   <noscript><style>
     .reveal { opacity: 1; transform: none; }
@@ -248,32 +248,77 @@
         </div>
         <div class="discover-block reveal">
           <p>32문항으로 알아보는 나의 기록 성향 — 16가지 유형 중 나는 어떤 사람일까요?</p>
-          <div class="persona-grid">
-            <figure class="persona-card">
-              <img src="assets/persona_infp.webp" alt="" loading="lazy">
-              <figcaption><span class="p-name">마음 깊이 꿈꾸는 사람</span><span class="p-code">INFP</span></figcaption>
-            </figure>
-            <figure class="persona-card">
-              <img src="assets/persona_enfp.webp" alt="" loading="lazy">
-              <figcaption><span class="p-name">함께 내일을 그리는 사람</span><span class="p-code">ENFP</span></figcaption>
-            </figure>
-            <figure class="persona-card">
-              <img src="assets/persona_intj.webp" alt="" loading="lazy">
-              <figcaption><span class="p-name">혼자 미래를 설계하는 사람</span><span class="p-code">INTJ</span></figcaption>
-            </figure>
-            <figure class="persona-card">
-              <img src="assets/persona_esfj.webp" alt="" loading="lazy">
-              <figcaption><span class="p-name">따뜻하게 연결하는 사람</span><span class="p-code">ESFJ</span></figcaption>
-            </figure>
-            <figure class="persona-card">
-              <img src="assets/persona_istp.webp" alt="" loading="lazy">
-              <figcaption><span class="p-name">차분히 문제를 푸는 사람</span><span class="p-code">ISTP</span></figcaption>
-            </figure>
-            <figure class="persona-card">
-              <img src="assets/persona_enfj.webp" alt="" loading="lazy">
-              <figcaption><span class="p-name">마음을 움직이는 사람</span><span class="p-code">ENFJ</span></figcaption>
-            </figure>
-          </div>
+          <!-- 16종 전부 가로로 편다. 순서는 앱 persona.dart 의 표준 순서 그대로.
+                 이미지는 앱 assets/illustrations/persona 원본(1536×1024)을
+                 540×360 으로 줄인 것 — 카드가 280px 라 2배 화면까지 덮는다. -->
+            <div class="persona-scroll">
+              <div class="persona-strip">
+                <figure class="persona-card">
+                  <img src="assets/persona/istj.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">꼼꼼하게 지켜가는 사람</span><span class="p-code">ISTJ</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/isfj.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">조용히 곁을 지키는 사람</span><span class="p-code">ISFJ</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/infj.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">마음속 나침반을 따라가는 사람</span><span class="p-code">INFJ</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/intj.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">혼자 미래를 설계하는 사람</span><span class="p-code">INTJ</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/istp.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">차분히 문제를 푸는 사람</span><span class="p-code">ISTP</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/isfp.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">지금 이 순간을 느끼는 사람</span><span class="p-code">ISFP</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/infp.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">마음 깊이 꿈꾸는 사람</span><span class="p-code">INFP</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/intp.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">혼자 조용히 탐구하는 사람</span><span class="p-code">INTP</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/estp.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">지금 이 순간을 즐기는 사람</span><span class="p-code">ESTP</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/esfp.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">함께라서 빛나는 사람</span><span class="p-code">ESFP</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/enfp.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">함께 내일을 그리는 사람</span><span class="p-code">ENFP</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/entp.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">새로운 가능성을 펼치는 사람</span><span class="p-code">ENTP</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/estj.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">든든하게 이끄는 사람</span><span class="p-code">ESTJ</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/esfj.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">따뜻하게 연결하는 사람</span><span class="p-code">ESFJ</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/enfj.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">마음을 움직이는 사람</span><span class="p-code">ENFJ</span></figcaption>
+                </figure>
+                <figure class="persona-card">
+                  <img src="assets/persona/entj.webp" alt="" loading="lazy" width="540" height="360">
+                  <figcaption><span class="p-name">앞길을 열어가는 사람</span><span class="p-code">ENTJ</span></figcaption>
+                </figure>
+              </div>
+            </div>
           <div class="reveal-frame" aria-label="성향 결과 발표 연출 미리보기">
             <div class="rv-eyebrow">— 결과 발표의 순간 —</div>
             <div class="rv-line">당신의 기록 성향은,<br>마음 깊이 꿈꾸는 사람<span class="caret">&nbsp;</span></div>
