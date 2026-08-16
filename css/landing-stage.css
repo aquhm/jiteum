@@ -36,35 +36,11 @@
 .st-screen { margin-top: 26px; width: 300px; max-width: 100%; border-radius: 22px;
   overflow: hidden; }
 
-/* ── 폰 안 화면 공통 ── */
-.sc { padding: 26px 20px; font-size: 13px; }
-
-/* 실기기 스크린샷 — 하루·한 주·한 달은 진짜 화면을 쓴다(계절과 해는
-   지나온 길 스샷이 아직 없어 CSS 재현 유지). 원본 비율 0.49 가 무대
-   슬롯 0.464 보다 살짝 넓어 cover 가 좌우를 조금 자른다. 핵심 내용이
-   위쪽에 있으니 top 을 고정한다. */
+/* ── 폰 안 화면 — 실기기 스크린샷 넉 장 ──
+   CSS 재현(.sc-*)은 전부 스샷으로 대체돼 지웠다(이 커밋 이전에 있다).
+   원본 비율 0.49 가 무대 슬롯 0.464 보다 살짝 넓어 cover 가 좌우를
+   조금 자를 뿐, 세로는 다 보인다. */
 .sc-shot { display: block; width: 100%; height: auto; }
-
-/* 하루·한 주·한 달의 CSS 재현은 실기기 스크린샷으로 대체돼 지웠다
-   (되살릴 일이 있으면 이 커밋 이전에서). 계절과 해만 재현이 남아 있다 —
-   지나온 길 스샷이 확보되면 같은 방식으로 교체하고 아래도 지울 것. */
-
-/* ── 계절과 해 — 한 해의 리듬 ── */
-.sc-year { background: linear-gradient(168deg, #241812 0%, #3E2419 46%, #6B3A28 100%); color: #fff; }
-.sc-year .h { font-size: 11.5px; color: #F2B08C; letter-spacing: .06em; }
-.sc-year .ttl { margin-top: 9px; font-size: 19px; font-weight: 800; letter-spacing: -.02em; color: #fff; }
-.sc-year .grid { margin-top: 22px; display: grid;
-  grid-template-columns: repeat(31, minmax(0, 1fr)); gap: 1.5px; }
-.sc-year .grid i { width: auto; height: auto; aspect-ratio: 1;
-  border-radius: 2px; background: rgba(255,255,255,.08); }
-.sc-year .grid i.m1 { background: #F2B17C; }
-.sc-year .grid i.m2 { background: #E7C36B; }
-.sc-year .grid i.m3 { background: #9CB0D6; }
-.sc-year .grid i.m4 { background: #CC8C8C; }
-.sc-year .cap { margin-top: 14px; font-size: 11.5px; color: rgba(255,255,255,.5); }
-.sc-year .care { margin-top: 20px; padding: 14px 15px; border-radius: 12px; background: rgba(0,0,0,.26);
-  border: 1px solid rgba(255,255,255,.13); font-size: 12.5px; line-height: 1.75;
-  color: rgba(255,255,255,.78); }
 
 /* ── has-js + 920px 이상에서만 sticky 무대로 승격 ──────────────────
    scroll 길이(500vh)에서 무대 높이(100vh)를 뺀 400vh 가 진행 구간이고,
@@ -99,15 +75,12 @@
   .has-js .st-scene.is-on { opacity: 1; pointer-events: auto; }
 
   /* 높이는 뷰포트를 따라 줄어든다 — 낮은 창(1366×768·1280×720)에서 폰이 헤더
-     밑으로 들어가거나 트랙에 잘리던 문제.
-     스크린샷 셋(.sc-shot)은 cover 라 아래가 잘릴 뿐 넘치지 않는다. 잘림에
-     민감한 건 CSS 재현이 남은 .sc-year 뿐 — 641px 창에서 프레임 493px 로
-     아슬하게 들어가고, 더 낮아지면 아래 요소부터 잘린다. */
+     밑으로 들어가거나 트랙에 잘리던 문제. 속이 스크린샷(cover)뿐이라
+     프레임이 얼마나 줄든 넘치지 않고, 낮은 창에선 화면 아래쪽이 잘릴 뿐이다. */
   .has-js .st-screen { margin-top: 0; justify-self: center; width: 320px;
     height: min(660px, calc(100vh - 148px));
     border-radius: 40px; padding: 13px; background: #14100C; overflow: visible;
     box-shadow: 0 34px 90px rgba(0,0,0,.34), 0 0 0 1.5px rgba(255,255,255,.09); }
-  .has-js .st-screen .sc { height: 100%; border-radius: 28px; overflow: hidden; }
   .has-js .st-screen .sc-shot { height: 100%; border-radius: 28px;
     object-fit: cover; object-position: top; }
 
