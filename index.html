@@ -479,7 +479,10 @@
     // IntersectionObserver + 트리거 요소 방식은 쓰지 않는다: 트리거를 감추면
     // 레이아웃에서 사라져 관찰이 영영 발화하지 않는다(시안 2차에서 겪음).
     (function () {
-      var TONE = ['#FBF8F4', '#F7F0E9', '#171129', '#2E1C14'];
+      // 무대 배경은 폰 화면의 빛깔을 따른다 — 하루는 연출의 어스름 보라,
+      // 한 주는 돌아봄의 살구, 한 달은 밤하늘, 계절과 해는 짙은 노을.
+      // 처음엔 앞 둘 다 크림이라 장면이 넘어가도 배경이 안 움직여 보였다.
+      var TONE = ['#EFEBF4', '#F8ECE0', '#171129', '#2E1C14'];
       var DARK = [false, false, true, true];
       var wrap = document.querySelector('.stage-wrap');
       var track = document.querySelector('.stage-track');
