@@ -21,7 +21,7 @@
   <link rel="preload" as="image" href="assets/7.webp">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="css/style.css?v=8">
-  <link rel="stylesheet" href="css/landing-stage.css?v=1">
+  <link rel="stylesheet" href="css/landing-stage.css?v=2">
   <noscript><style>
     .reveal { opacity: 1; transform: none; }
     /* JS 미동작이면 clear 를 벗길 주체가 없다. 히어로 밖에서 흰 글자가 흰 배경에
@@ -147,15 +147,11 @@
               <h3>오늘 하나를,<br>3분에</h3>
               <p>사진 한 장과 몇 줄이면 됩니다. AI가 오늘의 핵심과 잘한 점, 내일의 첫 행동을 하루 카드로 정리합니다. 전부 휴대폰 안에서.</p>
             </div>
+            <!-- 실기기 스크린샷. 588px 폭(표시 294px 의 2배) webp.
+                 원본 비율(0.49)이 슬롯(0.464)보다 살짝 넓어 cover 가 좌우를
+                 조금 자른다 — 핵심은 위쪽에 있으니 object-position:top. -->
             <div class="st-screen">
-              <div class="sc sc-day">
-                <div class="date">2026년 8월 3일 월요일</div>
-                <div class="ttl">버티는 날이 아니라,<br>고른 날이었다</div>
-                <div class="ph"></div>
-                <div class="bl"><b>오늘의 핵심</b><span>미루던 이야기를 먼저 꺼냈고, 생각보다 담담하게 끝났다.</span></div>
-                <div class="bl"><b>내일의 첫 걸음</b><span>아침에 5분만 걷기</span></div>
-                <div class="moods"><i></i><i></i><i></i><i></i><i></i></div>
-              </div>
+              <img class="sc-shot" src="assets/shots/day.webp" alt="오늘의 물음과 사진 한 장, 몇 줄로 하루를 남기는 기록 화면" loading="lazy" width="588" height="1200">
             </div>
           </div>
 
@@ -166,21 +162,7 @@
               <p>이레가 모이면 반복된 키워드가 보입니다. 무엇이 나를 흔들었고 무엇이 나를 세웠는지, 그리고 다음 주엔 어디에 마음을 둘지.</p>
             </div>
             <div class="st-screen">
-              <div class="sc sc-week">
-                <div class="h">7월 28일 — 8월 3일</div>
-                <div class="ttl">고르게 흘러간 한 주</div>
-                <div class="bars">
-                  <i style="height:54%;background:#F2B17C"></i>
-                  <i style="height:72%;background:#E7C36B"></i>
-                  <i style="height:40%;background:#9CB0D6"></i>
-                  <i style="height:88%;background:#CC8C8C"></i>
-                  <i style="height:63%;background:#F2B17C"></i>
-                  <i style="height:96%;background:#E7C36B"></i>
-                  <i style="height:78%;background:#9CB0D6"></i>
-                </div>
-                <div class="chips"><span>대화</span><span>산책</span><span>마감</span><span>비</span><span>혼자</span></div>
-                <div class="note">이번 주엔 「먼저 말하기」가 세 번 나왔어요. 다음 주엔 그 뒤에 남은 마음도 적어 볼까요.</div>
-              </div>
+              <img class="sc-shot" src="assets/shots/week.webp" alt="이번 주 이야기가 담긴 돌아봄 화면 — AI가 한 주를 한 문단으로 엮어 준다" loading="lazy" width="588" height="1200">
             </div>
           </div>
 
@@ -191,12 +173,7 @@
               <p>기록 하나가 별 하나. 한 달의 마음이 은하수로 이어집니다. 몰입 모드에서는 AI가 그 별들을 한 문단으로 엮고, 따뜻한 목소리로 읽어 줍니다.</p>
             </div>
             <div class="st-screen">
-              <div class="sc sc-galaxy">
-                <div class="h">2026년 7월</div>
-                <div class="ttl">스물여섯 개의 빛</div>
-                <div class="sky" aria-hidden="true"><i style="left:35.3%;top:6.2%;width:4.4px;height:4.4px;opacity:0.98"></i><i style="left:12.5%;top:81.6%;width:4.9px;height:4.9px;opacity:0.85"></i><i style="left:63.9%;top:62.9%;width:4.1px;height:4.1px;opacity:0.6"></i><i style="left:70.8%;top:2.8%;width:2.5px;height:2.5px;opacity:0.52"></i><i style="left:42.6%;top:33.6%;width:4px;height:4px;opacity:0.83"></i><i style="left:53.1%;top:31.8%;width:4.5px;height:4.5px;opacity:0.69"></i><i style="left:54.3%;top:28.8%;width:3.7px;height:3.7px;opacity:0.96"></i><i style="left:56.6%;top:37%;width:5.7px;height:5.7px;opacity:0.94"></i><i style="left:3.9%;top:37.1%;width:3.1px;height:3.1px;opacity:0.67"></i><i style="left:89.8%;top:3%;width:5.7px;height:5.7px;opacity:0.68"></i><i style="left:15.8%;top:82.6%;width:3.5px;height:3.5px;opacity:0.61"></i><i style="left:66%;top:91.2%;width:5.8px;height:5.8px;opacity:0.88"></i><i style="left:61.6%;top:82.4%;width:3.9px;height:3.9px;opacity:0.62"></i><i style="left:55.1%;top:57.6%;width:5.1px;height:5.1px;opacity:0.76"></i><i style="left:83.8%;top:68.6%;width:2.3px;height:2.3px;opacity:0.46"></i><i style="left:26.5%;top:75.7%;width:4.6px;height:4.6px;opacity:0.85"></i><i style="left:48.4%;top:81.6%;width:5.8px;height:5.8px;opacity:0.56"></i><i style="left:20.7%;top:83.6%;width:2.5px;height:2.5px;opacity:0.89"></i><i style="left:29.7%;top:79%;width:3.1px;height:3.1px;opacity:0.88"></i><i style="left:64.7%;top:18.3%;width:4.8px;height:4.8px;opacity:0.91"></i><i style="left:70.4%;top:20.7%;width:5.3px;height:5.3px;opacity:0.53"></i><i style="left:22.5%;top:31.7%;width:2.3px;height:2.3px;opacity:0.71"></i><i style="left:5.8%;top:30%;width:4px;height:4px;opacity:0.79"></i><i style="left:17.2%;top:3.9%;width:5.6px;height:5.6px;opacity:0.59"></i><i style="left:45.9%;top:58.6%;width:5.1px;height:5.1px;opacity:0.76"></i><i style="left:74.5%;top:40.2%;width:2.5px;height:2.5px;opacity:0.8"></i></div>
-                <div class="pass">비가 잦았던 달이었는데, 그 안에서 자주 걸었네요. 젖은 길을 마다하지 않은 한 달이었어요.</div>
-              </div>
+              <img class="sc-shot" src="assets/shots/galaxy.webp" alt="기록이 별이 되어 이어진 한 달의 밤하늘 — AI 가 그 달을 한 문단으로 읽어 준다" loading="lazy" width="588" height="1200">
             </div>
           </div>
 
