@@ -335,6 +335,18 @@ section[id] { scroll-margin-top: 84px; }
   scroll-snap-type: x proximity;
   padding: 6px 4px 14px; scroll-padding-left: 4px;
 }
+/* 마우스로 끌어 넘기기 — JS 가 붙었을 때만 손 모양을 보인다(끌 수 없는데
+   끌리게 생기면 거짓말이 된다). 터치는 브라우저 기본 스크롤이 이미 좋다. */
+.has-js .persona-strip { cursor: grab; }
+.persona-strip.is-dragging {
+  cursor: grabbing;
+  /* 끄는 중엔 스냅이 손끝을 낚아채고, smooth 는 scrollLeft 대입을 굼뜨게
+     만든다(html 에 걸린 scroll-behavior 를 여기서 끈다). */
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  user-select: none;
+}
+.persona-strip img { -webkit-user-drag: none; user-select: none; }
 .persona-strip::-webkit-scrollbar { height: 7px; }
 .persona-strip::-webkit-scrollbar-thumb { background: rgba(26, 20, 15, .18); border-radius: 99px; }
 .persona-strip::-webkit-scrollbar-track { background: transparent; }

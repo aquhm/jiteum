@@ -20,7 +20,7 @@
   <link rel="preload" as="image" href="assets/3.webp">
   <link rel="preload" as="image" href="assets/7.webp">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=8">
   <link rel="stylesheet" href="css/landing-stage.css?v=1">
   <noscript><style>
     .reveal { opacity: 1; transform: none; }
@@ -553,6 +553,51 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', onScroll);
       measure();
+    })();
+
+    // 성향 카드 끌어 넘기기 — 점진적 향상. JS 가 없어도 네이티브 가로 스크롤
+    // (트랙패드·Shift+휠·터치·스크롤바)은 그대로 된다.
+    // 마우스만 가로챈다: 터치·펜은 브라우저 기본 스크롤이 훨씬 매끄럽고,
+    // 손대는 순간 관성 스크롤을 잃는다.
+    (function () {
+      var strip = document.querySelector('.persona-strip');
+      if (!strip || !window.PointerEvent) return;
+      var dragging = false, startX = 0, startLeft = 0;
+
+      strip.addEventListener('pointerdown', function (e) {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        dragging = true;
+        startX = e.clientX;
+        startLeft = strip.scrollLeft;
+        strip.classList.add('is-dragging');
+      });
+
+      strip.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        var dx = e.clientX - startX;
+        // 살짝 움직인 뒤에야 포인터를 붙잡는다 — 바로 잡으면 그냥 누른
+        // 것까지 드래그로 먹어 버린다.
+        if (Math.abs(dx) > 3 && !strip.hasPointerCapture(e.pointerId)) {
+          // 포인터가 이미 놓인 뒤면 브라우저가 던진다 — 끌기 자체는 멀쩡하니 삼킨다.
+          try { strip.setPointerCapture(e.pointerId); } catch (_) {}
+        }
+        strip.scrollLeft = startLeft - dx;
+        e.preventDefault();
+      });
+
+      function release(e) {
+        if (!dragging) return;
+        dragging = false;
+        strip.classList.remove('is-dragging');
+        if (e.pointerId != null && strip.hasPointerCapture(e.pointerId)) {
+          strip.releasePointerCapture(e.pointerId);
+        }
+      }
+      strip.addEventListener('pointerup', release);
+      strip.addEventListener('pointercancel', release);
+
+      // 브라우저가 사진을 통째로 끌고 가는 기본 동작을 막는다.
+      strip.addEventListener('dragstart', function (e) { e.preventDefault(); });
     })();
   </script>
 </body>
