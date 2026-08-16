@@ -3,16 +3,26 @@
   옛 은결 경로 → 마음테 경로 리다이렉트 스텁.
   2026-07-17 앱명이 은결에서 마음테로 되돌아가며 /eungyeol/ → /maumte/ 로 옮겼다.
   /eungyeol/ 은 2026-07-13~17 사이 라이브였으므로, 그때 걸린 링크·색인이 깨지지
-  않도록 남겨 둔다. GitHub Pages 는 정적이라 301 을 못 주므로 meta refresh +
-  canonical(검색엔진에 새 주소를 알림) 로 처리한다.
+  않도록 남겨 둔다. GitHub Pages 는 정적이라 301 을 못 주므로 location.replace
+  (즉시·히스토리 무흔적) + meta refresh(JS 꺼짐 폴백) + canonical 로 처리한다.
+  배경을 도착지 색으로 깔고 문구는 1초 뒤에만 떠올라, 깜빡임이 보이지 않는다.
 -->
 <html lang="ko">
 <head>
   <meta charset="utf-8">
+  <script>location.replace("/");</script>
   <meta name="robots" content="noindex">
   <meta http-equiv="refresh" content="0; url=/">
   <link rel="canonical" href="https://www.jiteum.com/">
   <title>마음테 — 기록할수록, 나를 알게 됩니다</title>
+  <style>
+    html, body { margin: 0; min-height: 100vh; background: #14100C; }
+    p { padding: 40vh 24px 0; text-align: center; color: rgba(255,255,255,.75);
+        font-family: sans-serif; font-size: 15px;
+        opacity: 0; animation: in .4s ease 1s forwards; }
+    a { color: #F2B08C; }
+    @keyframes in { to { opacity: 1; } }
+  </style>
 </head>
 <body>
   <p>주소가 바뀌었습니다. <a href="/">마음테 페이지로 이동합니다…</a></p>

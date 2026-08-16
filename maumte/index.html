@@ -6,14 +6,28 @@
   /maumte/ 는 그 전까지 정식 주소였으므로 걸린 링크·색인이 깨지지 않게 남겨 둔다.
   방침·약관·안내(privacy/terms/ai-safety.html)는 스토어에 등록된 주소라
   리다이렉트하지 않고 이 폴더에 실제 문서로 그대로 둔다.
+
+  전환 순서: ① location.replace 가 파싱 즉시 옮긴다(히스토리에 스텁이 안
+  남아 뒤로가기 루프도 없다) ② JS 가 꺼져 있으면 meta refresh ③ 둘 다
+  실패한 경우에만 1초 뒤 안내 링크가 떠오른다. 배경은 도착지(랜딩 히어로
+  #14100C)와 같은 색이라 전환이 어둠→어둠으로 이어져 깜빡임이 안 보인다.
 -->
 <html lang="ko">
 <head>
   <meta charset="utf-8">
+  <script>location.replace("/");</script>
   <meta name="robots" content="noindex">
   <meta http-equiv="refresh" content="0; url=/">
   <link rel="canonical" href="https://www.jiteum.com/">
   <title>마음테 — 기록할수록, 나를 알게 됩니다</title>
+  <style>
+    html, body { margin: 0; min-height: 100vh; background: #14100C; }
+    p { padding: 40vh 24px 0; text-align: center; color: rgba(255,255,255,.75);
+        font-family: sans-serif; font-size: 15px;
+        opacity: 0; animation: in .4s ease 1s forwards; }
+    a { color: #F2B08C; }
+    @keyframes in { to { opacity: 1; } }
+  </style>
 </head>
 <body>
   <p>주소가 바뀌었습니다. <a href="/">마음테 페이지로 이동합니다…</a></p>
