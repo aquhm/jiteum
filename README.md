@@ -16,3 +16,19 @@
 - `eungyeol/`: 옛 경로 리다이렉트 스텁만 — 2026-07-17 앱명이 은결→마음테로 되돌아가며
   `/eungyeol/*` → `/maumte/*` 로 이동했다. 그 사이(07-13~17) 걸린 링크·색인이 깨지지 않게
   meta refresh + canonical 스텁을 남겨 둔다. 새 링크는 랜딩이면 `/`, 고지면 `/maumte/*`.
+- `robots.txt`·`sitemap.xml`: 색인 대상은 `/` 하나뿐이다. 법적 고지 3종과 리다이렉트
+  스텁은 `noindex` 라 sitemap 에 넣지 않는다(넣으면 신호가 어긋나 경고가 뜬다).
+  **새 페이지를 만들면 `sitemap.xml` 에 추가할 것.**
+
+## 문서
+
+- [`LAUNCH-CHECKLIST.md`](LAUNCH-CHECKLIST.md) — 출시 당일에 바꿀 것(“곧 출시” 여섯 곳·
+  UTM·공식 배지·실기기 스크린샷)과 그 뒤로 되풀이할 일(앱과의 동기화·FAQ·검색·측정).
+
+## 손대기 전에
+
+- **push = GitHub Pages 배포.** 로컬 확인은 `python -m http.server 8123` 로.
+- **`css/style.css` 를 고치면 `index.html` 의 `?v=` 를 올린다.** 안 올리면 브라우저가
+  옛 스타일시트를 계속 써서 "고쳤는데 안 바뀐다"가 된다.
+- 법적 고지는 앱 `lib/features/legal/data/legal_documents.dart` 가 원본, `maumte/*.html`
+  이 사본이다. 앱을 고치면 **같은 작업 안에서** 여기도 고친다.

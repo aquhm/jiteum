@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  색인 대상만 싣는다. 법적 고지 3종과 리다이렉트 스텁은 `noindex` 라
+  여기 넣으면 서로 어긋난 신호가 되어 Search Console 이 경고한다.
+  고지를 색인시키기로 정하면 그 meta 를 먼저 걷고 여기에 더할 것.
+  hub.html 은 어디서도 링크되지 않는 보관용이라 뺀다.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.jiteum.com/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
