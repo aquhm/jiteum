@@ -97,26 +97,18 @@ img { max-width: 100%; display: block; }
 /* 스티키 헤더(64px)에 가리지 않도록 앵커 위치 보정 */
 section[id] { scroll-margin-top: 84px; }
 
-/* 곧 출시 배지 — 활성 버튼처럼 보이지 않게 '상태'로 표현 */
-.badge-soon {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  background: var(--surface);
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 15px;
-  padding: 14px 22px;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-}
-.badge-soon::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-}
+/* 헤더 칩은 출시 뒤 스토어 링크다 — 칩 모양은 그대로 두고 글자만 또렷하게. */
+a.nav-chip { color: var(--ink); text-decoration: none; transition: background .2s ease; }
+a.nav-chip:hover { background: var(--surface-2); }
+.site-header.clear a.nav-chip:hover { background: rgba(255,255,255,.28); }
+
+/* Google Play 공식 배지 — 구글 브랜드 가이드상 직접 그린 버튼은 쓸 수 없다.
+   PNG 가 위아래 여백(높이의 약 1/4)을 품고 있어 따로 여백을 주지 않는다.
+   색·비율·모서리를 손대지 말 것(필터·그림자·테두리 금지). */
+.play-badge { display: inline-block; line-height: 0; border-radius: 12px; transition: transform .2s ease; }
+.play-badge img { height: 84px; width: auto; }
+.play-badge:hover { transform: translateY(-2px); }
+.play-badge:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* 시네마틱 히어로 — 실사 3장 크로스페이드(21s), 장면별 카메라 워크 */
 .cine-hero { position: relative; overflow: hidden; background: #14100C; min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
@@ -145,7 +137,6 @@ section[id] { scroll-margin-top: 84px; }
 .cine-sub { margin: 26px auto 36px; color: rgba(255,255,255,.86); font-size: clamp(16px, 2.3vw, 19.5px); font-weight: 500; line-height: 1.7; max-width: 30em; text-shadow: 0 2px 16px rgba(0,0,0,.4); opacity: 0; transform: translateY(20px); animation: rise 1s cubic-bezier(.2,.7,.3,1) .7s forwards; }
 .cine-cta { opacity: 0; animation: rise 1s ease 1.05s forwards; }
 @keyframes rise { to { opacity: 1; transform: none; } }
-.badge-soon.on-dark { background: rgba(255,255,255,.95); border-color: transparent; }
 .cine-caption { position: absolute; z-index: 2; bottom: 64px; left: 0; right: 0; height: 24px; pointer-events: none; }
 .cine-caption span { position: absolute; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,.72); font-size: 14.5px; font-weight: 600; letter-spacing: .01em; text-shadow: 0 2px 12px rgba(0,0,0,.5); white-space: nowrap; opacity: 0; }
 /* 자막도 같은 28초에 태운다. 1.26s=4.5% · 6.3s=22.5% · 7.77s=27.75%. */
@@ -272,6 +263,7 @@ section[id] { scroll-margin-top: 84px; }
 .foot-meta { color: var(--ink-soft); font-size: 14px; }
 .foot-meta a { color: var(--ink-soft); }
 .foot-meta p { margin: 2px 0; }
+.foot-meta .foot-legal { margin-top: 10px; font-size: 12.5px; }
 
 /* 법적 문서 페이지 */
 .legal { max-width: 680px; margin: 0 auto; padding: 48px 0 72px; }
