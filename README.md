@@ -12,6 +12,10 @@
   - AI 및 안전 안내: https://www.jiteum.com/maumte/ai-safety.html
   - `maumte/index.html` 은 옛 랜딩 주소 리다이렉트 스텁(→ `/`). 2026-07-23 랜딩이
     루트로 옮겨오기 전 정식 주소였으므로 걸린 링크·색인을 위해 남겨 둔다.
+- `todotop/`: 투두탑(Todo Tower, 앱 저장소 `daystack`) 랜딩과 법적 고지 — 폴더 안에 HTML·글꼴·이미지를 모두 둔다(루트 `css/`·`assets/` 를 쓰지 않는다).
+  - 랜딩: https://www.jiteum.com/todotop/ (sitemap 에 있음)
+  - 개인정보처리방침: https://www.jiteum.com/todotop/privacy.html (`noindex`) — **스토어에 등록하면 경로를 옮기지 않는다.**
+  - 생성할 이미지 8장은 `todotop/img/README.md`, 글꼴은 `todotop/fonts/README.md`.
 - 다음 앱은 폴더 추가 (폴더명 = URL 경로). 허브를 되살릴 땐 `hub.html` 참고.
 - `eungyeol/`: 옛 경로 리다이렉트 스텁만 — 2026-07-17 앱명이 은결→마음테로 되돌아가며
   `/eungyeol/*` → `/maumte/*` 로 이동했다. 그 사이(07-13~17) 걸린 링크·색인이 깨지지 않게
