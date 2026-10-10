@@ -10,11 +10,9 @@
 <link rel="canonical" href="https://www.jiteum.com/todotop/privacy.html">
 <link rel="icon" href="img/brand/icon-192.png" type="image/png">
 <!--
-  초안(2026-10-03) — 출시 전에 바꿀 것:
-  1) 시행일(운영자 김대호 · 문의 todotop@jiteum.com 은 채움 — 메일함이 있는지 확인)
-  2) 백업·복원(F-22)이 출시 판에 들어가는지 확인(지금은 feat/backup-restore 브랜치)
-  3) 권한 목록을 출시 빌드의 병합 매니페스트와 다시 대조
-  법률 검토를 받은 문서가 아니다.
+  원문: 앱 저장소 docs/legal/privacy-policy.md (2026-10-10 코드·release 빌드 기준).
+  운영자 지음 · 개인정보 보호책임자 김대호(마음테 방침과 같게) · 문의 todotop@jiteum.com(Cloudflare Email Routing).
+  권한은 2026-10-10 release APK aapt 결과와 대조했다. 법률 검토를 받은 문서가 아니다.
 -->
 <style>
 @font-face{font-family:"Pretendard"; src:url("fonts/Pretendard-Regular.woff2") format("woff2"); font-weight:400; font-display:swap}
@@ -78,7 +76,7 @@ td{color:var(--ink2)}
     </div>
     <div class="head">
       <h1>개인정보처리방침</h1>
-      <p>시행일: <span class="fill">2026년 ○월 ○일</span></p>
+      <p>시행일: 2026년 10월 10일</p>
     </div>
   </div>
 </header>
@@ -100,7 +98,7 @@ td{color:var(--ink2)}
 
     <section aria-labelledby="s1">
       <h2 id="s1">1. 수집하는 개인정보</h2>
-      <p>김대호(이하 "운영자")은 투두탑 앱(이하 "앱")에서 이용자의 개인정보를 수집하거나 운영자에게 전송받지 않아요. 앱에는 회원 가입이나 로그인이 없고, 운영자가 운영하는 서버가 없어요.</p>
+      <p>지음(이하 "운영자")은 투두탑 앱(이하 "앱")에서 이용자의 개인정보를 수집하거나 운영자에게 전송받지 않아요. 앱에는 회원 가입이나 로그인이 없고, 운영자가 운영하는 서버가 없어요.</p>
       <p>앱에는 광고, 사용 통계·분석 도구, 오류 보고(크래시 리포트) 도구가 들어 있지 않아요.</p>
     </section>
 
@@ -111,9 +109,11 @@ td{color:var(--ink2)}
         <li>이용자가 입력한 할 일 내용, 색, 날짜, 완료 여부와 완료한 시각</li>
         <li>중요 표시, 알림 시각, 반복해서 올리는 할 일(루틴)</li>
         <li>하루 시작 시각, 블록 룩, 진동·소리·알림 같은 설정</li>
-        <li>펜 장착 상태와 구매한 펜 기록(구매를 확인하는 데 필요한 정보)</li>
+        <li>펜 장착 상태와 가진 펜의 종류·갱신 시각</li>
+        <li>홈 화면 위젯을 둔 경우, 위젯에 보여 줄 요약(오늘 끝낸 수와 전체 수, 남은 할 일 이름 최대 3개, 다음 중요 할 일과 남은 날짜, 이번 주 탑 모양)</li>
       </ul>
       <p>앱을 지우면 이 정보도 함께 지워져요. 버린 할 일은 날이 바뀌면 폰에서 완전히 지워져요.</p>
+      <p><strong>화면에 보이는 곳:</strong> 알림(중요 할 일 알림, 이용자가 켠 아침·저녁 묶음 알림)과 홈 화면 위젯에는 할 일 이름이 보일 수 있어요. 잠금 화면에 알림 내용을 보일지는 폰 설정을 따라요. 알림과 위젯의 내용도 폰 안에서만 만들어지고 밖으로 보내지 않아요.</p>
     </section>
 
     <section aria-labelledby="s3">
@@ -129,7 +129,7 @@ td{color:var(--ink2)}
 
     <section aria-labelledby="s5">
       <h2 id="s5">5. 결제</h2>
-      <p>유료 펜은 Google Play 결제로 판매해요. 카드 번호 같은 결제 정보는 Google이 처리하고 운영자는 받지 않아요. 앱은 구매가 맞는지 확인하기 위해 Google Play가 알려 주는 구매 정보(상품과 구매 확인 값)를 폰 안에 저장해요. 결제 정보 처리는 <a href="https://policies.google.com/privacy?hl=ko">Google 개인정보처리방침</a>을 따라요.</p>
+      <p>유료 펜은 Google Play 결제로 판매해요. 카드 번호 같은 결제 정보는 Google이 처리하고 운영자는 받지 않아요. 앱은 Google Play가 알려 주는 구매 여부만 확인하고, 폰 안에는 가진 펜의 종류와 갱신 시각만 저장해요(구매 확인 값은 저장하지 않아요). 결제 정보 처리는 <a href="https://policies.google.com/privacy?hl=ko">Google 개인정보처리방침</a>을 따라요.</p>
     </section>
 
     <section aria-labelledby="s6">
@@ -143,9 +143,10 @@ td{color:var(--ink2)}
         <table>
           <thead><tr><th scope="col">권한</th><th scope="col">쓰는 이유</th></tr></thead>
           <tbody>
-            <tr><th scope="row">알림</th><td>중요한 할 일을 전날 저녁이나 그날 아침에 알려 줘요. 허용하지 않아도 다른 기능은 그대로 써요.</td></tr>
-            <tr><th scope="row">부팅 완료 알림 받기</th><td>폰을 다시 켠 뒤 예약해 둔 할 일 알림을 다시 맞춰요.</td></tr>
-            <tr><th scope="row">진동</th><td>할 일 알림이 올 때 진동으로 알려요.</td></tr>
+            <tr><th scope="row">알림</th><td>중요한 할 일을 전날 저녁이나 그날 아침에 알려 주고, 켜 두면 아침·저녁에 그날 할 일을 묶어 알려 줘요. 알림의 [✓]로 할 일을 바로 끝낼 수 있어요. 허용하지 않아도 다른 기능은 그대로 써요.</td></tr>
+            <tr><th scope="row">부팅 완료 알림 받기</th><td>폰을 다시 켠 뒤 예약해 둔 할 일 알림과 홈 화면 위젯 갱신을 다시 맞춰요.</td></tr>
+            <tr><th scope="row">진동</th><td>블록을 그을 때와 할 일 알림이 올 때 진동해요. 설정에서 끌 수 있어요.</td></tr>
+            <tr><th scope="row">기기 깨우기 유지</th><td>알림이나 홈 화면 위젯의 버튼을 눌렀을 때, 그 일을 마칠 때까지 잠깐 폰을 깨워 둬요(Android 작업 관리자가 써요).</td></tr>
             <tr><th scope="row">결제</th><td>Google Play에서 펜을 사고 구매를 복원해요.</td></tr>
             <tr><th scope="row">인터넷 · 네트워크 상태</th><td>Google Play 결제에 연결할 때만 써요. 할 일과 설정은 인터넷으로 보내지 않아요.</td></tr>
           </tbody>
@@ -176,6 +177,7 @@ td{color:var(--ink2)}
     <section aria-labelledby="s12">
       <h2 id="s12">12. 문의처</h2>
       <ul>
+        <li>운영자: 지음</li>
         <li>개인정보 보호 책임자: 김대호</li>
         <li>이메일: <a href="mailto:todotop@jiteum.com">todotop@jiteum.com</a></li>
       </ul>
@@ -189,7 +191,7 @@ td{color:var(--ink2)}
   </div>
 
   <footer class="foot">
-    <span>© 2026 투두탑</span> · <a href="index.html">처음으로</a>
+    <span>© 2026 지음 · 투두탑</span> · <a href="index.html">처음으로</a>
   </footer>
 </main>
 
