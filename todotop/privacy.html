@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개인정보처리방침 — 투두탑</title>
+<meta name="description" content="투두탑은 개인정보를 수집하지 않아요. 할 일은 이용자의 폰에 저장돼요.">
+<meta name="theme-color" content="#6FA8FF">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.jiteum.com/todotop/privacy.html">
+<link rel="icon" href="img/brand/icon-192.png" type="image/png">
+<!--
+  원문: 앱 저장소 docs/legal/privacy-policy.md (2026-10-10 코드·release 빌드 기준).
+  운영자 지음 · 개인정보 보호책임자 김대호(마음테 방침과 같게) · 문의 todotop@jiteum.com(Cloudflare Email Routing).
+  권한은 2026-10-10 release APK aapt 결과와 대조했다. 법률 검토를 받은 문서가 아니다.
+-->
+<style>
+@font-face{font-family:"Pretendard"; src:url("fonts/Pretendard-Regular.woff2") format("woff2"); font-weight:400; font-display:swap}
+@font-face{font-family:"Pretendard"; src:url("fonts/Pretendard-SemiBold.woff2") format("woff2"); font-weight:600; font-display:swap}
+@font-face{font-family:"Pretendard"; src:url("fonts/Pretendard-ExtraBold.woff2") format("woff2"); font-weight:800; font-display:swap}
+:root{
+  color-scheme:light;
+  --sky:#6FA8FF; --sun:#FF7350;
+  --paper:#FFFFFF; --paper2:#FAF6F0;
+  --ink:#1A1D23; --ink2:#4A5361; --line:rgba(26,29,35,.14);
+  --pad:22px;
+  --sans:"Pretendard",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); font-size:1.0625rem; line-height:1.75; word-break:keep-all; overflow-wrap:anywhere}
+h1,h2,p,ul,table{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid currentColor; outline-offset:3px; border-radius:6px}
+.wrap{width:100%; max-width:760px; margin:0 auto; padding:0 var(--pad)}
+
+.top{background:linear-gradient(100deg,var(--sky),var(--sun))}
+.top-row{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0}
+.brand{display:inline-flex; align-items:center; gap:10px; min-height:48px; font-weight:800; text-decoration:none}
+.brand img{width:32px; height:32px; border-radius:8px}
+.back{display:inline-flex; align-items:center; min-height:48px; padding:0 4px; font-size:.9375rem; font-weight:600}
+.head{padding:40px 0 48px}
+.head h1{font-size:clamp(2rem,7vw,3rem); line-height:1.15; letter-spacing:-.035em; font-weight:800}
+.head p{margin-top:12px; font-size:1.125rem}
+
+.summary{margin:48px 0 8px; padding:24px 24px 22px; border-radius:20px; background:var(--paper2)}
+.summary h2{font-size:1.125rem; font-weight:800}
+.summary ul{margin-top:10px; padding-left:1.2em}
+.summary li + li{margin-top:4px}
+
+.doc section{padding:36px 0 0}
+.doc h2{font-size:1.3125rem; line-height:1.4; letter-spacing:-.015em; font-weight:800}
+.doc p, .doc ul, .doc .table-wrap{margin-top:12px}
+.doc p, .doc li{color:var(--ink2)}
+.doc ul{padding-left:1.2em}
+.doc li + li{margin-top:6px}
+.doc strong{color:var(--ink); font-weight:600}
+.table-wrap{overflow-x:auto}
+table{width:100%; border-collapse:collapse; font-size:.9375rem; line-height:1.6}
+th, td{padding:10px 12px 10px 0; border-bottom:1px solid var(--line); text-align:left; vertical-align:top}
+th{font-weight:600; color:var(--ink); white-space:nowrap}
+td{color:var(--ink2)}
+.fill{padding:0 4px; border-radius:4px; background:#FFF27A; color:var(--ink)}
+
+.foot{margin-top:72px; padding:24px 0 32px; border-top:1px solid var(--line); font-size:.9375rem; color:var(--ink2)}
+.foot a{display:inline-flex; align-items:center; min-height:48px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="top-row">
+      <a class="brand" href="../"><img src="img/brand/icon-96.webp" alt="" width="32" height="32">투두탑</a>
+      <a class="back" href="../">지음</a>
+    </div>
+    <div class="head">
+      <h1>개인정보처리방침</h1>
+      <p>시행일: 2026년 10월 10일</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="summary" aria-labelledby="sum">
+    <h2 id="sum">한눈에 보기</h2>
+    <ul>
+      <li>투두탑은 개인정보를 수집하지 않아요. 운영자가 받는 서버도, 계정도 없어요.</li>
+      <li>할 일과 설정은 이용자의 폰 안에만 저장돼요.</li>
+      <li>광고, 사용 분석, 오류 보고 도구를 넣지 않았어요.</li>
+      <li>펜을 살 때의 결제는 Google Play가 처리해요.</li>
+      <li>폰의 Google 백업이 켜져 있으면, 앱 데이터가 이용자 본인의 Google 계정에 백업될 수 있어요.</li>
+    </ul>
+  </section>
+
+  <div class="doc">
+
+    <section aria-labelledby="s1">
+      <h2 id="s1">1. 수집하는 개인정보</h2>
+      <p>지음(이하 "운영자")은 투두탑 앱(이하 "앱")에서 이용자의 개인정보를 수집하거나 운영자에게 전송받지 않아요. 앱에는 회원 가입이나 로그인이 없고, 운영자가 운영하는 서버가 없어요.</p>
+      <p>앱에는 광고, 사용 통계·분석 도구, 오류 보고(크래시 리포트) 도구가 들어 있지 않아요.</p>
+    </section>
+
+    <section aria-labelledby="s2">
+      <h2 id="s2">2. 폰 안에만 저장되는 정보</h2>
+      <p>앱이 동작하려면 아래 정보를 이용자의 폰 안 앱 저장 공간에 저장해요. 이 정보는 운영자에게 전송되지 않아요.</p>
+      <ul>
+        <li>이용자가 입력한 할 일 내용, 색, 날짜, 완료 여부와 완료한 시각</li>
+        <li>중요 표시, 알림 시각, 반복해서 올리는 할 일(루틴)</li>
+        <li>하루 시작 시각, 블록 룩, 진동·소리·알림 같은 설정</li>
+        <li>펜 장착 상태와 가진 펜의 종류·갱신 시각</li>
+        <li>홈 화면 위젯을 둔 경우, 위젯에 보여 줄 요약(오늘 끝낸 수와 전체 수, 남은 할 일 이름 최대 3개, 다음 중요 할 일과 남은 날짜, 이번 주 탑 모양)</li>
+      </ul>
+      <p>앱을 지우면 이 정보도 함께 지워져요. 버린 할 일은 날이 바뀌면 폰에서 완전히 지워져요.</p>
+      <p><strong>화면에 보이는 곳:</strong> 알림(중요 할 일 알림, 이용자가 켠 아침·저녁 묶음 알림)과 홈 화면 위젯에는 할 일 이름이 보일 수 있어요. 잠금 화면에 알림 내용을 보일지는 폰 설정을 따라요. 알림과 위젯의 내용도 폰 안에서만 만들어지고 밖으로 보내지 않아요.</p>
+    </section>
+
+    <section aria-labelledby="s3">
+      <h2 id="s3">3. Google 계정 자동 백업</h2>
+      <p>Android에는 앱 데이터를 이용자의 Google 계정에 자동으로 백업하는 기능이 있어요. 투두탑은 이 기능을 켜 두었어요. 폰의 백업 설정이 켜져 있으면 2번의 정보가 <strong>이용자 본인의 Google 계정 저장 공간</strong>에 백업되고, 같은 계정으로 새 폰을 설정하거나 앱을 다시 설치할 때 돌아와요.</p>
+      <p>이 백업은 Google이 처리하며 운영자는 백업된 내용을 볼 수 없어요. 원하지 않으면 폰의 <strong>설정 → Google → 백업</strong>에서 끌 수 있어요. 처리 방식은 <a href="https://policies.google.com/privacy?hl=ko">Google 개인정보처리방침</a>을 따라요.</p>
+    </section>
+
+    <section aria-labelledby="s4">
+      <h2 id="s4">4. 백업 파일</h2>
+      <p>설정의 [백업 만들기]를 누르면 할 일 기록을 파일 하나로 만들어 <strong>이용자가 고른 위치</strong>에 저장해요. 파일은 운영자에게 전송되지 않으며, 어디에 두고 누구와 나눌지는 이용자가 정해요. 구매한 펜 기록은 백업 파일에 넣지 않아요. 펜은 Google Play의 구매 복원으로 되찾을 수 있어요.</p>
+    </section>
+
+    <section aria-labelledby="s5">
+      <h2 id="s5">5. 결제</h2>
+      <p>유료 펜은 Google Play 결제로 판매해요. 카드 번호 같은 결제 정보는 Google이 처리하고 운영자는 받지 않아요. 앱은 Google Play가 알려 주는 구매 여부만 확인하고, 폰 안에는 가진 펜의 종류와 갱신 시각만 저장해요(구매 확인 값은 저장하지 않아요). 결제 정보 처리는 <a href="https://policies.google.com/privacy?hl=ko">Google 개인정보처리방침</a>을 따라요.</p>
+    </section>
+
+    <section aria-labelledby="s6">
+      <h2 id="s6">6. 다른 앱에서 공유받은 글</h2>
+      <p>다른 앱에서 글을 투두탑으로 공유하면, 앱은 그 글을 할 일로 올리는 데에만 쓰고 폰 밖으로 보내지 않아요.</p>
+    </section>
+
+    <section aria-labelledby="s7">
+      <h2 id="s7">7. 앱이 쓰는 권한</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">권한</th><th scope="col">쓰는 이유</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">알림</th><td>중요한 할 일을 전날 저녁이나 그날 아침에 알려 주고, 켜 두면 아침·저녁에 그날 할 일을 묶어 알려 줘요. 알림의 [✓]로 할 일을 바로 끝낼 수 있어요. 허용하지 않아도 다른 기능은 그대로 써요.</td></tr>
+            <tr><th scope="row">부팅 완료 알림 받기</th><td>폰을 다시 켠 뒤 예약해 둔 할 일 알림과 홈 화면 위젯 갱신을 다시 맞춰요.</td></tr>
+            <tr><th scope="row">진동</th><td>블록을 그을 때와 할 일 알림이 올 때 진동해요. 설정에서 끌 수 있어요.</td></tr>
+            <tr><th scope="row">기기 깨우기 유지</th><td>알림이나 홈 화면 위젯의 버튼을 눌렀을 때, 그 일을 마칠 때까지 잠깐 폰을 깨워 둬요(Android 작업 관리자가 써요).</td></tr>
+            <tr><th scope="row">결제</th><td>Google Play에서 펜을 사고 구매를 복원해요.</td></tr>
+            <tr><th scope="row">인터넷 · 네트워크 상태</th><td>Google Play 결제에 연결할 때만 써요. 할 일과 설정은 인터넷으로 보내지 않아요.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="s8">
+      <h2 id="s8">8. 제3자 제공과 처리 위탁</h2>
+      <p>운영자는 개인정보를 수집하지 않으므로 제3자에게 제공하거나 처리를 위탁하는 개인정보가 없어요. 3번의 Google 백업과 5번의 결제는 이용자와 Google 사이에서 처리돼요.</p>
+    </section>
+
+    <section aria-labelledby="s9">
+      <h2 id="s9">9. 보관 기간과 파기</h2>
+      <p>운영자가 보관하는 개인정보는 없어요. 폰 안의 정보는 이용자가 할 일을 지우거나 앱을 지울 때 함께 지워져요. Google 계정에 백업된 데이터는 Google 계정 설정에서 지울 수 있어요.</p>
+    </section>
+
+    <section aria-labelledby="s10">
+      <h2 id="s10">10. 이용자의 권리</h2>
+      <p>모든 정보가 이용자의 폰(과 이용자 본인의 Google 계정)에 있으므로, 이용자는 언제든 앱 안에서 할 일을 고치거나 지울 수 있고, 앱을 지워 모든 정보를 없앨 수 있어요. 궁금한 점은 아래 문의처로 연락해 주세요.</p>
+    </section>
+
+    <section aria-labelledby="s11">
+      <h2 id="s11">11. 아동의 개인정보</h2>
+      <p>앱은 누구의 개인정보도 수집하지 않으므로, 만 14세 미만 아동의 개인정보도 수집하지 않아요.</p>
+    </section>
+
+    <section aria-labelledby="s12">
+      <h2 id="s12">12. 문의처</h2>
+      <ul>
+        <li>운영자: 지음</li>
+        <li>개인정보 보호 책임자: 김대호</li>
+        <li>이메일: <a href="mailto:todotop@jiteum.com">todotop@jiteum.com</a></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="s13">
+      <h2 id="s13">13. 방침의 변경</h2>
+      <p>이 방침이 바뀌면 이 페이지와 앱 업데이트 안내로 알려 드려요. 바뀐 내용은 이 페이지 맨 위의 시행일부터 적용돼요.</p>
+    </section>
+
+  </div>
+
+  <footer class="foot">
+    <span>© 2026 지음 · 투두탑</span> · <a href="../">지음</a>
+  </footer>
+</main>
+
+</body>
+</html>
