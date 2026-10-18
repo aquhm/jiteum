@@ -19,8 +19,8 @@
   max-width: 29em; text-shadow: 0 2px 14px rgba(0,0,0,.4); }
 
 /* ══ 스크롤 스테이지 ═════════════════════════════════════════════
-   기본은 평범한 세로 나열이다. has-js + 920px 이상에서만 sticky 무대로
-   승격한다(Task 5). 마크업은 한 벌뿐이라 본문이 JS 에 갇히지 않는다. */
+   기본은 평범한 세로 나열이다. has-js 면 sticky 무대로 승격한다 — 920px
+   이상은 두 단, 미만은 한 단. 마크업은 한 벌뿐이라 본문이 JS 에 갇히지 않는다. */
 .stage-wrap { padding: 64px 0; }
 .stage-viewport { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
 .st-rail { display: none; }               /* 눈금은 무대에서만 쓴다 */
@@ -92,12 +92,54 @@
   .has-js .stage-track.is-dark .st-rail li.is-on { color: #F2B08C; }
 }
 
-/* 폴백에서는 JS 가 칠한 인라인 배경을 무시한다.
-   go() 는 폭과 무관하게 항상 배경을 칠하는데, 이를 보정하는 is-dark 글자 반전은
-   920px 안에만 있다. 그대로 두면 폴백에서 어두운 배경 위에 어두운 글자가 남아
-   제목 명암비가 1.1:1 까지 떨어진다. author !important 는 non-important 인라인
-   스타일을 이기므로 JS 는 건드리지 않고 여기서 무력화한다. */
-@media not all and (min-width: 920px) { .stage-track { background: transparent !important; } }
+/* ── 920px 미만(모바일·좁은 창)도 has-js 면 무대로 승격 ─────────────
+   데스크톱의 두 단 대신 한 단: 위에 눈금 알약 → 제목·본문 → 남은 높이를
+   폰 프레임이 채운다. 폰은 grid 의 1fr 행 높이를 받고 aspect-ratio 로
+   폭을 정하므로, 화면이 낮으면 폰이 작아질 뿐 넘치지 않는다.
+   높이는 svh — 주소창이 접히고 펴질 때마다 무대가 출렁이지 않게
+   가장 작은 뷰포트 기준으로 잡는다(미지원 브라우저는 앞 줄 vh). */
+@media (max-width: 919.98px) {
+  .has-js .stage-wrap { height: 500vh; height: 500svh; padding: 0; }
+  .has-js .stage-track { position: sticky; top: 0; height: 100vh; height: 100svh;
+    overflow: hidden; background: #FBF8F4; transition: background .8s ease; }
+  .has-js .stage-viewport { height: 100%; position: relative; padding: 0; }
+
+  /* 눈금은 가로 알약 한 줄 — 단계 태그(.st-tag) 역할을 겸한다 */
+  .has-js .st-rail { display: flex; justify-content: center; gap: 4px; margin: 0;
+    padding: 0 12px; list-style: none; position: absolute; top: 76px; left: 0; right: 0;
+    z-index: 2; }
+  .has-js .st-rail li { font-size: 12.5px; font-weight: 700; padding: 5px 11px;
+    border-radius: 999px; color: rgba(26,20,15,.5); white-space: nowrap;
+    transition: color .5s ease, background .5s ease; }
+  .has-js .st-rail li.is-on { color: var(--accent-ink); background: rgba(255,255,255,.75); }
+  .has-js .st-tag { display: none; }
+
+  .has-js .st-scene { position: absolute; inset: 0; border-top: 0;
+    padding: 122px 20px 22px;
+    display: grid; grid-template-rows: auto minmax(0, 1fr); row-gap: 18px;
+    text-align: center; opacity: 0; transition: opacity .55s ease; pointer-events: none; }
+  .has-js .st-scene.is-on { opacity: 1; pointer-events: auto; }
+  .has-js .st-copy h3 { margin-top: 0; font-size: clamp(23px, 6.6vw, 30px); }
+  .has-js .st-copy p { margin: 10px auto 0; font-size: 14.5px; line-height: 1.65;
+    max-width: 25em; }
+
+  .has-js .st-screen { margin: 0; justify-self: center; height: 100%; width: auto;
+    max-width: 100%; aspect-ratio: .48; border-radius: 30px; padding: 8px;
+    background: #14100C; overflow: hidden;
+    box-shadow: 0 22px 56px rgba(0,0,0,.28), 0 0 0 1.5px rgba(255,255,255,.09); }
+  .has-js .st-screen .sc-shot { width: 100%; height: 100%; border-radius: 22px;
+    object-fit: cover; object-position: top; }
+
+  .has-js .stage-track.is-dark .st-copy h3 { color: #fff; }
+  .has-js .stage-track.is-dark .st-copy p { color: rgba(255,255,255,.72); }
+  .has-js .stage-track.is-dark .st-rail li { color: rgba(255,255,255,.5); }
+  .has-js .stage-track.is-dark .st-rail li.is-on { color: #F2B08C; background: rgba(255,255,255,.12); }
+}
+
+/* JS 가 없으면 무대가 없다 — 인라인 배경이 남을 일도 없지만, 혹시 칠해져도
+   글자 반전이 없는 평범한 나열이라 배경을 무력화해 둔다.
+   (예전엔 920px 미만 전부가 이 폴백이었다.) */
+html:not(.has-js) .stage-track { background: transparent !important; }
 
 /* 눈에는 안 보이되 접근성 트리에는 남는 제목 — display:none 이면 안 된다.
    무대엔 보이는 제목을 두지 않기로 한 디자인이라, 문서 개요만 바로잡는다. */
