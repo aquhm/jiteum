@@ -21,7 +21,8 @@
 <link rel="icon" href="img/brand/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="img/brand/icon-192.png">
 <link rel="preload" href="fonts/Pretendard-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
-<!-- 구조화 데이터. 출시 뒤 SoftwareApplication 에 downloadUrl(스토어 주소)을 넣는다. FAQPage 는 아래 "자주 묻는 질문"과 같은 문구여야 한다 -->
+<link rel="preload" href="fonts/Pretendard-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<!-- 구조화 데이터. downloadUrl 은 스토어 주소(앱이 Play 에 올라가기 전에는 404). aggregateRating 은 실제 평점이 쌓인 뒤에만. FAQPage 는 아래 "자주 묻는 질문"과 같은 문구여야 한다 -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,6 +39,7 @@
     "priceCurrency": "KRW"
   },
   "url": "https://www.jiteum.com/todotop/",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.weight500.todotop",
   "image": "https://www.jiteum.com/todotop/img/brand/og-image.jpg"
 }
 </script>
@@ -72,6 +74,14 @@
     },
     {
       "@type": "Question",
+      "name": "날짜가 정해진 일은요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "쌓을 때 날짜와 \"중요\"를 정할 수 있어요. 중요한 일은 금빛 띠로 표시되고, 하루 전 저녁과 당일 아침 무렵에 알려 줘요."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "지난 날을 고칠 수 있나요?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -92,6 +102,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "네. 펜을 사거나 구매를 복원할 때만 인터넷이 필요해요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "백업할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 설정의 데이터에서 파일 하나로 백업을 만들고, 그 파일로 통째로 되살려요. Android 자동 백업도 켜져 있어요."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "글자를 키우거나 TalkBack을 써도 되나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네. 글자를 두 배로 키워도, TalkBack으로 들어도 똑같이 쓸 수 있어요. 3D가 버거운 폰에서는 같은 내용을 목록으로 보여 줘요."
       }
     },
     {
@@ -122,7 +148,7 @@
   --paper:#FFFFFF; --paper2:#FAF6F0;
   --ink:#1A1D23; --ink2:#4A5361;
   --night:#241C17; --night2:#3A2F27; --on-night:#F7F0E6; --on-night2:#D2C4B3;
-  --pen:#D7263D; --mint:#5EEAD4;
+  --pen:#D7263D; --mint:#5EEAD4; --sun-deep:#E25A2C; /* 흰 바탕 위 큰 글자용 코랄(3.7:1) */
   --wood:#DDAE6F; --wood-done:#F1DDB8; --wood-ink:#3A2A18;
   --maxw:1120px; --pad:22px;
   --sans:"Pretendard",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
@@ -152,41 +178,37 @@ a{color:inherit}
 .slot b{font-size:1.0625rem; font-weight:800; color:inherit}
 .slot-dark{border-color:rgba(247,240,230,.38); color:rgba(247,240,230,.78)}
 
-/* 버튼 */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  min-height:56px; padding:12px 28px; border-radius:28px;
-  background:var(--ink); color:#fff; font-size:1.0625rem; font-weight:600; line-height:1.3;
-  text-align:center; text-decoration:none;
-}
-.btn svg{width:20px; height:20px; flex:none}
-.btn-light{background:#fff; color:var(--ink)}
+/* 공식 Google Play 배지 — 브랜드 가이드: 고치지 않고 그대로, 주변 여백 유지(마음테와 같은 자산) */
+.play-badge{display:inline-block; line-height:0; border-radius:12px}
+.play-badge img{height:80px; width:auto}
 
-/* 상단 메뉴 — 앱의 유리 캡슐과 같은 틴트 */
-.nav{position:fixed; top:10px; left:0; right:0; z-index:20; pointer-events:none}
-.nav-pill{
-  pointer-events:auto; display:flex; align-items:center; justify-content:space-between; gap:8px;
-  padding:4px 4px 4px 14px; border:1px solid rgba(255,255,255,.14); border-radius:30px;
-  background:rgba(24,26,33,.74); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
-  color:#F5F7FA;
-}
-.nav-brand{display:inline-flex; align-items:center; gap:10px; min-height:48px; font-weight:800; text-decoration:none}
-.nav-brand img{width:32px; height:32px; border-radius:8px}
-.nav-links{display:none; gap:4px}
-.nav-links a{display:inline-flex; align-items:center; min-height:48px; padding:0 14px; border-radius:24px; font-size:.9375rem; font-weight:600; text-decoration:none; color:#C9D1DC}
-.nav-links a:hover{color:#fff}
-.nav-get{display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 20px; border-radius:24px; background:var(--mint); color:#04201D; font-size:.9375rem; font-weight:800; text-decoration:none}
+/* 상단 헤더 — 히어로 위에서는 투명(clear), 지나면 흰 유리 바(마음테와 같은 방식).
+   마크업이 clear 를 미리 달고 JS 가 스크롤에 따라 벗긴다(JS 가 붙이면 첫 화면에 흰 바가 한 프레임 스친다). 스크립트가 없으면 noscript 가 흰 바로 되돌린다 */
+.nav{position:fixed; top:0; left:0; right:0; z-index:20; background:rgba(255,255,255,.86); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); border-bottom:1px solid rgba(26,29,35,.08); transition:background .3s, border-color .3s}
+.nav.clear{background:transparent; border-bottom-color:transparent; -webkit-backdrop-filter:none; backdrop-filter:none}
+.nav-bar{display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px}
+.nav-brand{display:inline-flex; align-items:center; gap:10px; min-height:48px; font-size:1.125rem; font-weight:800; letter-spacing:-.02em; color:var(--ink); text-decoration:none}
+.nav-brand img{width:30px; height:30px; border-radius:8px; box-shadow:0 1px 2px rgba(26,29,35,.18)}
+.nav-right{display:flex; align-items:center; gap:4px}
+.nav-links{display:none; gap:0} /* 360 미만: 숨김 · 360~899: 펜·질문만 · 900 이상: 넷 다 */
+.nav-links a{position:relative; display:inline-flex; align-items:center; min-height:48px; padding:0 14px; font-size:.9375rem; font-weight:600; text-decoration:none; color:var(--ink2); transition:color .2s}
+.nav.clear .nav-links a{color:var(--ink)} /* 하늘빛 위에서는 진한 먹(7:1) */
+.nav-links a:hover, .nav-links a.on{color:var(--ink)}
+.nav-links a.on::after{content:""; position:absolute; left:14px; right:14px; bottom:9px; height:2px; border-radius:1px; background:var(--sun-deep)} /* 지금 보는 구역 */
+.nav-get{display:inline-flex; align-items:center; justify-content:center; min-height:40px; margin-left:10px; padding:0 18px; border-radius:20px; background:var(--ink); color:#fff; font-size:.9375rem; font-weight:700; text-decoration:none; transition:background .2s}
+.nav-get:hover{background:#2A2E37}
 
 /* 히어로 */
 .hero{position:relative; min-height:100svh; display:flex; flex-direction:column; overflow:hidden; background:linear-gradient(180deg,var(--sky),var(--sun))}
-.hero-slot{flex:1; margin:32px var(--pad) 28px; min-height:300px}
-.hero-slot .wide{display:none}
-.hero-photo{position:absolute; inset:0; z-index:1; background:url("img/hero-tall.webp") center bottom/cover no-repeat}
+.hero-phone{width:min(74%,300px); margin:36px auto 28px}
+/* 폰 틀 — 실기기 스크린샷(9:16, img/shots/)을 넣는다 */
+.phone{position:relative; width:100%; aspect-ratio:9/16; padding:10px; border-radius:36px; background:#14161C; box-shadow:0 24px 60px rgba(20,15,11,.35), inset 0 0 0 1px rgba(255,255,255,.08)}
+.phone img{width:100%; height:100%; object-fit:cover; object-position:top; border-radius:27px}
 .hero-copy{position:relative; z-index:2; padding-top:104px}
 .hero h1{font-size:clamp(3.1rem,14.5vw,5.75rem); line-height:1.04; letter-spacing:-.05em; font-weight:800}
 .hero h1 span{display:block}
 .hero-lead{margin-top:22px; max-width:22em; font-size:1.125rem}
-.hero .btn{margin-top:24px}
+.hero .play-badge{margin-top:24px}
 .hero-fine{margin-top:10px; font-size:.9375rem}
 
 /* 구역 공통 */
@@ -199,7 +221,7 @@ a{color:inherit}
 .how-grid{display:grid; gap:56px}
 .how-steps{margin-top:36px; display:grid; gap:28px; counter-reset:step}
 .how-steps li{position:relative; padding-left:64px; counter-increment:step}
-.how-steps li::before{content:counter(step); position:absolute; left:0; top:-10px; width:48px; font-family:var(--hand); font-size:4rem; line-height:1; color:var(--sun); text-align:center}
+.how-steps li::before{content:counter(step); position:absolute; left:0; top:-10px; width:48px; font-family:var(--hand); font-size:4rem; line-height:1; color:var(--sun-deep); text-align:center}
 .how-steps h3{font-size:1.25rem; font-weight:800; letter-spacing:-.01em; line-height:1.35}
 .how-steps p{margin-top:4px; color:var(--ink2)}
 
@@ -244,10 +266,10 @@ a{color:inherit}
 
 /* 어두운 띠 — 긋는 맛 */
 .band{position:relative; overflow:hidden; background:radial-gradient(120% 90% at 70% 10%,#5A4638,var(--night) 70%); color:var(--on-night)}
-.band-photo{position:absolute; inset:0; z-index:1; background:url("img/strike.webp") center/cover no-repeat}
-.band-photo::after{content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(20,15,11,.82),rgba(20,15,11,0) 62%)}
-.band-in{z-index:2}
-.band-slot{margin-top:40px}
+/* 긋는 순간 — 실기기 캡처(스토어 02). img/strike.webm 이 있으면 그 위에서 영상이 돌고, 없으면(onerror) 숨어서 캡처만 보인다 */
+.band-shot{position:relative; margin-top:40px; width:min(100%,420px); aspect-ratio:4/5; border-radius:24px; overflow:hidden; background:var(--night2); box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.band-shot img, .band-shot video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.band-shot img{object-position:center 62%}
 .band-in{position:relative; min-height:76svh; display:flex; flex-direction:column; justify-content:center; padding-top:96px; padding-bottom:96px}
 .band-say{position:relative; display:inline-block; align-self:flex-start; font-size:clamp(2.75rem,11vw,5.5rem); line-height:1.08; letter-spacing:-.05em; font-weight:800}
 .band-say svg{position:absolute; left:-1%; top:96%; width:102%; height:.2em; overflow:visible}
@@ -257,17 +279,19 @@ a{color:inherit}
 /* 스크롤 구간 — 하루가 쌓이면 */
 .stage{background:var(--night); color:var(--on-night)}
 .stage-track{padding:96px 0}
-.stage-head{font-size:1rem; font-weight:600; color:var(--on-night2)}
+.stage-head{font-size:clamp(1.75rem,5.6vw,2.6rem); line-height:1.16; letter-spacing:-.03em; font-weight:800; color:var(--on-night)}
+.stage-eyebrow{display:block; margin-bottom:8px; font-size:.9375rem; line-height:1.4; letter-spacing:.02em; font-weight:600; color:var(--on-night2)}
 .stage-grid{display:grid; gap:28px; margin-top:20px}
-.stage-art{position:relative; height:46svh; min-height:300px; border-radius:26px; overflow:hidden; background:var(--night2)}
+.stage-art{position:relative; height:40svh; min-height:300px; border-radius:26px; overflow:hidden; background:var(--night2)}
 .stage-shot{position:absolute; inset:0; padding:14px; opacity:0; transition:opacity .55s}
 .stage-shot .slot{height:100%; min-height:0}
 .stage-shot::after{content:""; position:absolute; inset:0; background:center/cover no-repeat}
 .stage-shot-1{opacity:1}
-.stage-shot-1::after{background-image:url("img/stage-1.webp")}
-.stage-shot-2::after{background-image:url("img/stage-2.webp")}
-.stage-shot-3::after{background-image:url("img/stage-3.webp")}
-.stage-shot-4::after{background-image:url("img/stage-4.webp")}
+/* 1·2는 같은 캡처의 윗부분(주간 카드 + 오늘 묶음)과 아랫부분(지난 묶음), 3은 깃발 캡처, 4는 아직 자리(미룬 블록 캡처 필요) */
+.stage-shot-1::after{background-image:url("img/shots/tower-week.webp"); background-position:center 22%}
+.stage-shot-2::after{background-image:url("img/shots/tower-week.webp"); background-position:center 66%}
+.stage-shot-3::after{background-image:url("img/shots/week-flag.webp"); background-position:center 45%}
+.stage-shot-4::after{background-image:url("img/stage-4.webp")} /* 먼지·이끼 앉은 블록 근접 캡처(4:5) */
 .stage-nav{display:none}
 .stage-panel + .stage-panel{margin-top:40px}
 .stage-panel h3{font-size:clamp(1.75rem,5.6vw,3rem); line-height:1.18; letter-spacing:-.035em; font-weight:800}
@@ -275,7 +299,7 @@ a{color:inherit}
 .stage-label{display:inline-block; margin-bottom:14px; padding:4px 14px; border-radius:16px; background:rgba(255,255,255,.12); font-size:.9375rem; font-weight:600; color:var(--on-night)}
 
 .js .stage{height:400vh}
-.js .stage-track{position:sticky; top:0; height:100vh; padding:84px 0 24px; display:flex; flex-direction:column; justify-content:center}
+.js .stage-track{position:sticky; top:0; height:100vh; padding:84px 0 24px; display:flex; flex-direction:column; justify-content:safe center} /* 내용이 화면보다 길면 가운데가 아니라 위에 맞춘다 — 제목이 메뉴 밑으로 숨지 않게 */
 .js .stage-panels{position:relative; min-height:17.5rem}
 .js .stage-panel{position:absolute; left:0; right:0; top:0; margin:0; opacity:0; visibility:hidden; transform:translateY(12px); transition:opacity .45s, transform .45s, visibility 0s .45s}
 .js .stage-shot{opacity:0}
@@ -293,6 +317,7 @@ a{color:inherit}
   display:flex; gap:16px; margin-top:40px; padding-bottom:14px; overflow-x:auto;
   margin-inline:calc(var(--pad) * -1); padding-inline:var(--pad);
   scroll-snap-type:x mandatory; scroll-padding-inline:var(--pad);
+  scrollbar-width:thin; /* 넘길 수 있다는 단서는 남기되 두껍지 않게 */
 }
 .look{flex:0 0 72%; max-width:340px; scroll-snap-align:start}
 .look-frame{aspect-ratio:480/792; overflow:hidden}
@@ -306,10 +331,10 @@ a{color:inherit}
 
 /* 펜 */
 .pens-band{position:relative; overflow:hidden; background:var(--night2); color:var(--on-night)}
-.pens-photo{position:absolute; inset:0; z-index:1; background:url("img/pens.webp") right center/cover no-repeat}
-.pens-photo::after{content:""; position:absolute; inset:0; background:linear-gradient(90deg,var(--night2) 34%,rgba(58,47,39,0) 80%)}
 .pens-in{position:relative; z-index:2; padding-top:104px; padding-bottom:104px}
-.pens-slot{margin-top:40px}
+/* 펜 가게 화면 — 실기기 캡처(스토어 06). 가격이 찍혀 있으니 표기 결정에 따라 교체 */
+.pens-shot{position:relative; margin-top:40px; width:min(100%,420px); aspect-ratio:4/5; border-radius:24px; overflow:hidden; background:#1B1A26; box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.pens-shot img{width:100%; height:100%; object-fit:cover; object-position:top}
 .pens-band .sub{color:var(--on-night2)}
 .pens{display:grid; grid-template-columns:repeat(2,1fr); gap:28px 16px; margin-top:40px; max-width:760px}
 .pen-swatch{position:relative; display:flex; align-items:center; min-height:60px; padding:4px 16px; border-radius:8px; color:var(--wood-ink); font-family:var(--hand); font-size:1.875rem; line-height:1;
@@ -350,8 +375,27 @@ a{color:inherit}
 .cal i.d{background:#2E9B62}
 .cal i.h{background:#E0A63A}
 .cal i.t{background:var(--ink); outline:3px solid rgba(26,29,35,.25); outline-offset:2px}
-.sizes{font-weight:800; letter-spacing:-.04em; color:var(--on-night); line-height:1; white-space:nowrap}
-.sizes span:nth-child(1){font-size:1.5rem} .sizes span:nth-child(2){font-size:2.75rem} .sizes span:nth-child(3){font-size:4.5rem}
+.art-mint{background:linear-gradient(180deg,#D7F5EE,#A8E6D9)}
+/* 홈 위젯 미니어처(오늘 목록 4×2) */
+.widget{width:78%; padding:12px 14px; border-radius:18px; background:rgba(24,26,33,.9); color:#F5F7FA; font-size:.875rem; line-height:1.4}
+.widget b{display:flex; justify-content:space-between; gap:8px; padding-bottom:8px; font-weight:600}
+.widget b span{color:#C9D1DC; font-weight:400}
+.widget i{display:flex; align-items:center; gap:10px; padding:6px 0; font-style:normal; border-top:1px solid rgba(255,255,255,.1)}
+.widget i::before{content:""; width:18px; height:18px; border-radius:50%; border:2px solid var(--mint); flex:none}
+.widget i.done{color:#8E97A3; text-decoration:line-through; text-decoration-color:var(--pen); text-decoration-thickness:2px}
+.widget i.done::before{background:var(--mint)}
+/* 저녁 묶음 알림 미니어처 */
+.notif{width:80%; padding:12px 14px; border-radius:16px; background:#fff; color:var(--ink); font-size:.8125rem; line-height:1.4; box-shadow:0 8px 24px rgba(26,29,35,.12)}
+.notif b{display:flex; align-items:center; gap:8px; font-weight:600; font-size:.75rem; color:var(--ink2)}
+.notif b::before{content:""; width:14px; height:14px; border-radius:4px; background:linear-gradient(180deg,var(--sky),var(--sun))}
+.notif-text{display:block; margin-top:4px; font-weight:600}
+.notif em{display:inline-block; margin:8px 6px 0 0; padding:3px 10px; border-radius:12px; background:var(--mint); color:#04201D; font-style:normal; font-weight:800; font-size:.75rem}
+/* 메달 셋(동·금·은) */
+.medals{display:flex; align-items:center; gap:14px}
+.medals i{width:56px; height:56px; border-radius:50%; box-shadow:0 6px 14px rgba(0,0,0,.35), inset 0 0 0 4px rgba(255,255,255,.22)}
+.medals i:nth-child(1){background:radial-gradient(circle at 35% 30%,#F3D9BF,#B86E3B 60%,#6E3F1D)}
+.medals i:nth-child(2){width:74px; height:74px; background:radial-gradient(circle at 35% 30%,#F8E9BE,#D19F32 60%,#8A5E14)}
+.medals i:nth-child(3){background:radial-gradient(circle at 35% 30%,#FFFFFF,#B9C2CC 60%,#7B8590)}
 
 /* 약속 */
 .vows-band{background:var(--night); color:var(--on-night)}
@@ -373,19 +417,28 @@ a{color:inherit}
 /* 마지막 띠 */
 .closing{padding:112px 0 20px; background:linear-gradient(180deg,var(--sky),var(--sun))}
 .closing-say{font-size:clamp(2.6rem,10vw,5rem); line-height:1.1; letter-spacing:-.05em; font-weight:800}
-.closing .btn{margin-top:30px}
+.closing .play-badge{margin-top:30px}
 .foot{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:4px 20px; margin-top:96px; font-size:.9375rem}
 .foot nav{display:flex; gap:12px}
 .foot a{display:inline-flex; align-items:center; justify-content:center; min-width:48px; min-height:48px}
+.foot-legal{flex-basis:100%; margin-top:6px; font-size:.8125rem}
+
+@media (min-width:360px){
+  .nav-links{display:flex}
+  .nav-links .lg{display:none}
+  .nav-links a{min-width:44px; justify-content:center; padding:0 10px; font-size:.875rem}
+  .nav-links a.on::after{left:10px; right:10px}
+}
 
 @media (min-width:900px){
   :root{--pad:36px}
-  .nav-links{display:flex}
+  .nav-links{gap:4px}
+  .nav-links a.lg{display:inline-flex}
+  .nav-links span.lg{display:inline}
+  .nav-links a{padding:0 14px; font-size:.9375rem}
+  .nav-links a.on::after{left:14px; right:14px}
   .hero{flex-direction:row; align-items:center}
-  .hero-slot{position:absolute; right:max(var(--pad), calc((100% - var(--maxw)) / 2 + var(--pad))); top:104px; bottom:48px; width:min(40%, 470px); margin:0}
-  .hero-slot .wide{display:inline}
-  .hero-slot .tall{display:none}
-  .hero-photo{background-image:url("img/hero-wide.webp"); background-position:center}
+  .hero-phone{position:absolute; right:max(var(--pad), calc((100% - var(--maxw)) / 2 + var(--pad))); top:50%; transform:translateY(-50%); width:min(30%, 340px, calc((100svh - 150px) * .5625)); margin:0}
   .hero-copy{padding-top:96px; padding-bottom:40px}
   .hero h1{font-size:clamp(4.6rem,7.2vw,6.75rem)}
   .hero-lead{max-width:20em; font-size:1.25rem}
@@ -413,7 +466,7 @@ a{color:inherit}
   .looks{display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-inline:0; padding-inline:0; overflow:visible}
   .look{max-width:none}
   .pens-in{padding-top:150px; padding-bottom:150px}
-  .pens-slot{position:absolute; right:var(--pad); top:150px; width:min(30%, 320px); height:420px; margin:0}
+  .pens-shot{position:absolute; right:var(--pad); top:150px; width:min(30%, 320px); margin:0}
   .pens{grid-template-columns:repeat(3,1fr); gap:40px 28px; max-width:min(760px, 62%)}
   .pens-price{max-width:min(28em, 62%)}
   .tiles{grid-template-columns:repeat(2,1fr); gap:56px 40px}
@@ -422,7 +475,7 @@ a{color:inherit}
 }
 
 @media (min-width:1100px){
-  .band-slot{position:absolute; right:var(--pad); top:120px; bottom:120px; width:40%; margin:0}
+  .band-shot{position:absolute; right:var(--pad); top:50%; transform:translateY(-50%); width:min(34%,380px); margin:0}
   .stage-grid{grid-template-columns:150px 1fr minmax(0,440px)}
   .stage-nav{display:grid}
 }
@@ -435,42 +488,38 @@ a{color:inherit}
 </head>
 <body>
 
-<header class="nav">
-  <div class="wrap">
-    <div class="nav-pill">
-      <a class="nav-brand" href="#top">
-        <img src="img/brand/icon-96.webp" alt="" width="32" height="32">
-        투두탑
-      </a>
+<header class="nav clear">
+  <div class="wrap nav-bar">
+    <a class="nav-brand" href="#top">
+      <img src="img/brand/icon-96.webp" alt="" width="30" height="30">
+      투두탑
+    </a>
+    <div class="nav-right">
       <nav class="nav-links" aria-label="본문 바로가기">
-        <a href="#how">쓰는 법</a>
-        <a href="#stack">탑</a>
+        <a class="lg" href="#how">쓰는 법</a>
+        <a class="lg" href="#stack">탑</a>
         <a href="#pens">펜</a>
-        <a href="#faq">자주 묻는 질문</a>
+        <a href="#faq"><span class="lg">자주 묻는&nbsp;</span>질문</a>
       </nav>
-      <!-- 출시 때 바꿀 것: 스토어 주소(https://play.google.com/store/apps/details?id=com.weight500.todotop) -->
-      <a class="nav-get" href="#">앱 받기</a>
+      <!-- 스토어 링크는 메뉴·히어로·마지막 띠 세 곳. utm_content 로 자리를 가른다(Play 콘솔 > 획득 보고서). 앱이 Play 에 올라가기 전에는 404 -->
+      <a class="nav-get" href="https://play.google.com/store/apps/details?id=com.weight500.todotop&amp;utm_source=landing&amp;utm_medium=web&amp;utm_campaign=launch&amp;utm_content=header">앱 받기</a>
     </div>
   </div>
 </header>
+<noscript><style>.nav.clear{background:rgba(255,255,255,.86); border-bottom-color:rgba(26,29,35,.08)}</style></noscript>
 
 <main id="top">
 
 <section class="hero">
-  <div class="hero-photo" role="img" aria-label="새벽 하늘빛 배경 앞에 쌓인 나무 블록 탑. 맨 위 블록에 빨간 줄이 그어져 있어요."></div>
   <div class="wrap hero-copy">
     <h1><span>할 일을</span> <span>날마다</span> <span>한 층씩</span></h1>
     <p class="hero-lead">오늘 할 일을 블록으로 쌓아요. 끝내면 줄을 긋고, 그 하루하루가 쌓여 탑이 돼요.</p>
-    <!-- 출시 때 바꿀 것: 스토어 주소 · 공식 Google Play 배지 이미지 -->
-    <a class="btn" href="#">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3.5v17a1 1 0 0 0 1.5.87l14.5-8.5a1 1 0 0 0 0-1.74L6.5 2.63A1 1 0 0 0 5 3.5z"/></svg>
-      Google Play에서 받기
-    </a>
+    <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.weight500.todotop&amp;utm_source=landing&amp;utm_medium=web&amp;utm_campaign=launch&amp;utm_content=hero"><img src="img/brand/google-play-badge-ko.png" alt="Google Play에서 다운로드" width="646" height="250"></a>
     <p class="hero-fine">Android용이에요. 광고는 없어요.</p>
   </div>
-  <div class="slot hero-slot" aria-hidden="true">
-    <b><span class="wide">img/hero-wide.webp</span><span class="tall">img/hero-tall.webp</span></b>
-    <span>나무 블록 탑 · 하늘빛 그라데이션<br>탑은 <span class="wide">오른쪽 1/3</span><span class="tall">아래쪽 절반</span>, 나머지는 글자 자리</span>
+  <!-- 실기기 캡처(스토어 스크린샷 01). 원본은 앱 저장소 design/store/screenshots/, 변환 규칙은 img/README.md -->
+  <div class="hero-phone">
+    <div class="phone"><img src="img/shots/tower-week.webp" alt="투두탑 오늘 화면. 이번 주 17/33 카드 아래 나무 블록 탑. 빨래 개기·운동 30분·책 20쪽에 빨간 줄이 그어져 있고, 남은 블록은 삐져나와 있어요." width="900" height="1600" fetchpriority="high"></div>
   </div>
 </section>
 
@@ -533,25 +582,28 @@ a{color:inherit}
 </section>
 
 <section class="band">
-  <div class="band-photo"></div>
   <div class="wrap band-in">
     <h2 class="band-say">끝내면, 긋는다<svg viewBox="0 0 400 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 C80 4,170 20,250 9 S350 8,396 13"/></svg></h2>
     <p class="band-sub">완료 버튼이 아니에요. 펜이 날아와 블록 네 면에 줄을 그어요. 하루에도 몇 번씩 여는 앱이라, 그 한 번이 손맛이어야 했어요.</p>
-    <div class="slot slot-dark band-slot" aria-hidden="true"><b>img/strike.webp</b><span>빨간 마커가 블록에 줄을 긋는 순간<br>그림은 오른쪽 절반, 왼쪽은 어둡게</span></div>
+    <!-- 실기기 캡처(펜이 긋는 순간). img/strike.webm 을 넣으면 그 위에서 영상이 돈다(없으면 숨음). img/README.md -->
+    <div class="band-shot">
+      <img src="img/shots/strike.webp" alt="펜이 날아와 '운동 30분' 블록에 빨간 줄을 긋는 순간" width="900" height="1600" loading="lazy">
+      <video autoplay muted loop playsinline poster="img/shots/strike.webp" aria-hidden="true"><source src="img/strike.webm" type="video/webm" onerror="this.parentNode.hidden=true"></video>
+    </div>
   </div>
 </section>
 
 <section class="stage" id="stack" data-step="0">
   <div class="stage-track">
     <div class="wrap">
-      <h2 class="stage-head">하루가 쌓이면</h2>
+      <h2 class="stage-head"><span class="stage-eyebrow">하루가 쌓이면</span>탑이 돼요</h2>
       <div class="stage-grid">
         <!-- 이미지 자리: img/stage-1.webp ~ stage-4.webp (4:5) -->
         <div class="stage-art" aria-hidden="true">
-          <div class="stage-shot stage-shot-1"><div class="slot slot-dark"><b>img/stage-1.webp</b><span>오늘 — 탑 꼭대기, 오늘 묶음<br>남은 블록이 삐져나옴</span></div></div>
-          <div class="stage-shot stage-shot-2"><div class="slot slot-dark"><b>img/stage-2.webp</b><span>어제 — 탑 아래쪽 묶음<br>거의 다 그음, 하나만 삐져나옴</span></div></div>
-          <div class="stage-shot stage-shot-3"><div class="slot slot-dark"><b>img/stage-3.webp</b><span>한 주 — 다 그은 탑 꼭대기에<br>코랄색 깃발</span></div></div>
-          <div class="stage-shot stage-shot-4"><div class="slot slot-dark"><b>img/stage-4.webp</b><span>미룬 일 — 먼지와 이끼가 앉은<br>블록 하나 가까이</span></div></div>
+          <div class="stage-shot stage-shot-1"><div class="slot slot-dark"><b>img/shots/tower-week.webp</b><span>오늘 — 주간 카드와 맨 위 묶음</span></div></div>
+          <div class="stage-shot stage-shot-2"><div class="slot slot-dark"><b>img/shots/tower-week.webp</b><span>어제 — 같은 화면의 아래 묶음</span></div></div>
+          <div class="stage-shot stage-shot-3"><div class="slot slot-dark"><b>img/shots/week-flag.webp</b><span>한 주 — 4주 깃발</span></div></div>
+          <div class="stage-shot stage-shot-4"><div class="slot slot-dark"><b>img/stage-4.webp</b><span>미룬 일 — 먼지와 이끼가 앉은 블록 가까이</span></div></div>
         </div>
         <ol class="stage-nav" aria-hidden="true">
           <li>오늘</li>
@@ -590,18 +642,18 @@ a{color:inherit}
   <div class="wrap">
     <h2 class="h2">탑의 모양은 세 가지예요</h2>
     <p class="sub">같은 할 일도 룩에 따라 다르게 보여요. 설정에서 바꿔요.</p>
-    <!-- 출시 때 바꿀 것: 실기기(S23) 캡처로 교체 -->
+    <!-- 실기기 캡처(스토어 01·04·05). 옛 렌더 img/looks/ 는 더 안 쓴다 -->
     <div class="looks" role="group" aria-label="블록 룩 세 가지" tabindex="0">
       <figure class="look">
-        <div class="look-frame look-wood"><img src="img/looks/tower-real.webp" alt="나무 룩: 나뭇결이 보이는 블록 탑" width="480" height="792" loading="lazy"></div>
+        <div class="look-frame look-wood"><img src="img/shots/tower-week.webp" alt="나무 룩: 나뭇결이 보이는 블록 탑 화면" width="900" height="1600" loading="lazy"></div>
         <figcaption>나무<small>결이 살아 있는 기본 룩</small></figcaption>
       </figure>
       <figure class="look">
-        <div class="look-frame look-bright"><img src="img/looks/tower-bright.webp" alt="화사한 색 룩: 파스텔 색 블록 탑" width="480" height="792" loading="lazy"></div>
+        <div class="look-frame look-bright"><img src="img/shots/look-bright.webp" alt="화사한 색 룩: 파스텔 색 블록 탑 화면" width="900" height="1600" loading="lazy"></div>
         <figcaption>화사한 색<small>할 일 색이 블록 몸통이 돼요</small></figcaption>
       </figure>
       <figure class="look">
-        <div class="look-frame look-toon"><img src="img/looks/tower-toon.webp" alt="카툰 룩: 검은 윤곽선이 있는 만화풍 블록 탑" width="480" height="792" loading="lazy"></div>
+        <div class="look-frame look-toon"><img src="img/shots/look-cartoon.webp" alt="카툰 룩: 검은 윤곽선이 있는 만화풍 블록 탑 화면" width="900" height="1600" loading="lazy"></div>
         <figcaption>카툰<small>검은 윤곽선의 만화풍</small></figcaption>
       </figure>
     </div>
@@ -609,7 +661,6 @@ a{color:inherit}
 </section>
 
 <section class="pens-band" id="pens">
-  <div class="pens-photo"></div>
   <div class="wrap pens-in">
     <h2 class="h2">펜마다 긋는 맛이 달라요</h2>
     <p class="sub">색만 다른 펜은 없어요. 펜이 바뀌면 선의 느낌이 바뀌어요.</p>
@@ -640,7 +691,7 @@ a{color:inherit}
         <figcaption>네온</figcaption>
       </figure>
     </div>
-    <div class="slot slot-dark pens-slot" aria-hidden="true"><b>img/pens.webp</b><span>펜 여섯 자루가 나란히 놓인 사진<br>펜은 오른쪽, 왼쪽은 글자 자리</span></div>
+    <div class="pens-shot"><img src="img/shots/pen-shop.webp" alt="펜 가게 화면. 유료 펜 4종 묶음 카드와 기본 마커·형광펜 카드" width="900" height="1600" loading="lazy"></div>
     <p class="pens-price">여섯 자루 중 두 자루는 처음부터 쓸 수 있어요. 나머지 네 자루는 <strong>한 자루에 ₩1,500</strong>, <strong>네 자루 묶음은 ₩4,400</strong>이에요. 한 번 사면 계속 써요.</p>
   </div>
 </section>
@@ -648,6 +699,7 @@ a{color:inherit}
 <section class="sec">
   <div class="wrap">
     <h2 class="h2">쌓다 보면 쓰게 되는 것들</h2>
+    <!-- 그림은 CSS 미니어처다. 위젯·알림·진열장은 실기기 캡처로 바꾸면 더 낫다(img/README.md). 근거: 내일 미리 쌓기 F-16 · 빠른 입구 D-097 · 홈 위젯 D-101 · 알림 묶음 D-100 · 달력 점프 · 업적 D-102 -->
     <div class="tiles">
       <div class="tile">
         <div class="tile-art art-sky" aria-hidden="true"><div class="mini"><i class="ghost"></i><i class="ghost"></i><i></i><i></i></div></div>
@@ -655,9 +707,19 @@ a{color:inherit}
         <p>저녁이 되면 오늘 위로 내일 할 일이 반투명하게 떠 있어요. 하루가 넘어가면 내려앉아요.</p>
       </div>
       <div class="tile">
+        <div class="tile-art art-paper" aria-hidden="true"><div class="widget"><b>오늘 2개 남음<span>3일째</span></b><i>장보기</i><i>PR 리뷰</i><i class="done">운동 30분</i></div></div>
+        <h3>홈 화면에서 바로 그어요</h3>
+        <p>오늘 목록 위젯과 미니 탑 위젯. 위젯의 ○를 누르면 앱을 열지 않고 그 자리에서 끝나요.</p>
+      </div>
+      <div class="tile">
         <div class="tile-art art-sun" aria-hidden="true"><div class="quick"><b>우유 사기</b><span class="on">오늘</span><span>내일</span></div></div>
         <h3>앱을 열지 않고 올려요</h3>
         <p>다른 앱의 공유, 빠른 설정 타일, 아이콘 길게 누르기. 보던 화면 위에 작은 카드 하나만 떠요.</p>
+      </div>
+      <div class="tile">
+        <div class="tile-art art-mint" aria-hidden="true"><div class="notif"><b>투두탑 · 저녁</b><span class="notif-text">아직 2개 남았어요</span><em>✓ 장보기</em><em>✓ PR 리뷰</em></div></div>
+        <h3>아침·저녁에 묶어서 알려 줘요</h3>
+        <p>아침엔 오늘 탑이 몇 층인지, 저녁엔 몇 개 남았는지 하루 두 번 묶어 알려요. 알림의 ✓ 버튼을 누르면 앱을 열지 않고 끝나요. 기본은 꺼져 있어요.</p>
       </div>
       <div class="tile">
         <div class="tile-art art-paper" aria-hidden="true"><div class="cal"><i class="d"></i><i class="d"></i><i class="h"></i><i class="d"></i><i class="d"></i><i class="d"></i><i></i><i class="d"></i><i class="h"></i><i class="d"></i><i class="d"></i><i class="t"></i><i></i><i></i></div></div>
@@ -665,9 +727,9 @@ a{color:inherit}
         <p>탑을 한참 내리지 않아도 돼요. 날짜를 고르면 그 묶음으로 넘어가고, 며칠째 이어 가는지도 보여요.</p>
       </div>
       <div class="tile">
-        <div class="tile-art art-wood" aria-hidden="true"><div class="sizes"><span>가</span> <span>가</span> <span>가</span></div></div>
-        <h3>크게 봐도, 귀로 들어도 돼요</h3>
-        <p>글자를 두 배로 키워도, TalkBack으로 들어도 똑같이 쓸 수 있어요. 3D가 버거운 폰에서는 같은 내용을 목록으로 보여 줘요.</p>
+        <div class="tile-art art-wood" aria-hidden="true"><div class="medals"><i></i><i></i><i></i></div></div>
+        <h3>이어 가면 메달이 쌓여요</h3>
+        <p>긋기 100번, 30일 연속 같은 이정표를 지나거나 루틴을 이어 가면 동·은·금 메달을 줘요. 기록 탭 맨 위 진열장에 모여요.</p>
       </div>
     </div>
   </div>
@@ -702,6 +764,10 @@ a{color:inherit}
         <p>그날 자리에 끝내지 못한 채로 남아요. 그리고 같은 일이 오늘 묶음에 새 블록으로 다시 올라와요.</p>
       </details>
       <details>
+        <summary>날짜가 정해진 일은요?</summary>
+        <p>쌓을 때 날짜와 "중요"를 정할 수 있어요. 중요한 일은 금빛 띠로 표시되고, 하루 전 저녁과 당일 아침 무렵에 알려 줘요.</p>
+      </details>
+      <details>
         <summary>지난 날을 고칠 수 있나요?</summary>
         <p>고칠 수 없어요. 지난 날은 그날의 기록으로 그대로 남아요. 고치기와 버리기는 오늘 묶음에서만 돼요.</p>
       </details>
@@ -714,6 +780,14 @@ a{color:inherit}
         <p>네. 펜을 사거나 구매를 복원할 때만 인터넷이 필요해요.</p>
       </details>
       <details>
+        <summary>백업할 수 있나요?</summary>
+        <p>네. 설정의 데이터에서 파일 하나로 백업을 만들고, 그 파일로 통째로 되살려요. Android 자동 백업도 켜져 있어요.</p>
+      </details>
+      <details>
+        <summary>글자를 키우거나 TalkBack을 써도 되나요?</summary>
+        <p>네. 글자를 두 배로 키워도, TalkBack으로 들어도 똑같이 쓸 수 있어요. 3D가 버거운 폰에서는 같은 내용을 목록으로 보여 줘요.</p>
+      </details>
+      <details>
         <summary>iPhone에서도 쓸 수 있나요?</summary>
         <p>지금은 Android만 돼요.</p>
       </details>
@@ -724,17 +798,15 @@ a{color:inherit}
 <section class="closing">
   <div class="wrap">
     <h2 class="closing-say">오늘 한 층,<br>쌓아 볼까요</h2>
-    <!-- 출시 때 바꿀 것: 스토어 주소(https://play.google.com/store/apps/details?id=com.weight500.todotop) -->
-    <a class="btn" href="#">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3.5v17a1 1 0 0 0 1.5.87l14.5-8.5a1 1 0 0 0 0-1.74L6.5 2.63A1 1 0 0 0 5 3.5z"/></svg>
-      Google Play에서 받기
-    </a>
+    <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.weight500.todotop&amp;utm_source=landing&amp;utm_medium=web&amp;utm_campaign=launch&amp;utm_content=footer"><img src="img/brand/google-play-badge-ko.png" alt="Google Play에서 다운로드" width="646" height="250" loading="lazy"></a>
     <footer class="foot">
       <span>© 2026 투두탑</span>
       <nav aria-label="안내">
         <a href="privacy.html">개인정보처리방침</a>
         <a href="mailto:todotop@jiteum.com">문의</a>
+        <a href="../">지음 홈</a>
       </nav>
+      <p class="foot-legal">Google Play 및 Google Play 로고는 Google LLC의 상표입니다.</p>
     </footer>
   </div>
 </section>
@@ -746,6 +818,8 @@ a{color:inherit}
 (function(){
   var stage = document.querySelector('.stage');
   if(!stage) return;
+  /* 움직임 줄이기: 고정(핀)하지 않고 네 장면을 그대로 나열한다 — 스크롤 재킹 없음 */
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.documentElement.classList.add('js');
   var steps = 4, ticking = false;
   function update(){
@@ -772,6 +846,32 @@ a{color:inherit}
   }
   window.addEventListener('resize', sync);
   sync();
+})();
+
+/* 헤더: 히어로 위에서는 투명(clear), 지나면 흰 바. 구역 링크는 지금 보는 구역에 밑줄. */
+(function(){
+  var nav = document.querySelector('.nav'), hero = document.querySelector('.hero');
+  if(!nav || !hero) return;
+  var links = [].slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+  var targets = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var ticking = false;
+  function update(){
+    ticking = false;
+    nav.classList.toggle('clear', window.scrollY < hero.offsetHeight - 80);
+    var y = window.scrollY + 120, current = -1;
+    targets.forEach(function(t, i){ if(t && t.offsetTop <= y) current = i; });
+    links.forEach(function(a, i){ a.classList.toggle('on', i === current); });
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+
+/* 움직임 줄이기: 긋기 영상은 자동 재생하지 않고 포스터만 보여 준다. */
+(function(){
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('video[autoplay]').forEach(function(v){ v.removeAttribute('autoplay'); v.removeAttribute('loop'); v.pause(); });
 })();
 </script>
 
